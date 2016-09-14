@@ -3,9 +3,11 @@
 
 using namespace std;
 
-int Main()
+int main()
 {
 	cout << "Hello Fucking man!";
-	List<int>* list = new List<int>();
+	List<int> list;
+	list.Add(5).Add(23).Add(34);
+	cout << list[1];
 	return 0;
 }
