@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <functional>
 
 template <typename T> class List;
 
@@ -7,22 +8,24 @@ template <typename T> class List;
 /// 线性结构节点类
 /// </summary>
 template <typename T>
-class Node
+class ListNode
 {
 	friend class List<T>;
 public:
 	static int _total;
 protected:
-	Node<T>* _before;
-	Node<T>* _next;
+	ListNode<T>* _before;
+	ListNode<T>* _next;
 	T data;
-	Node()
+	ListNode()
 	{
+		_before = _next = nullptr;
 		_total++;
 	}
-	~Node()
+	~ListNode()
 	{
 		_total--;
+		cout << endl << "delete a node : " << ListNode<T>::_total;
 	}
 };
 
@@ -31,7 +34,10 @@ protected:
 /// 全部的未销毁的节点个数
 /// </summary>
 template <typename T>
-int Node<T>::_total = 0;
+int ListNode<T>::_total = 0;
+
+
+
 
 /// <summary>
 /// 链表
@@ -40,17 +46,17 @@ template <typename T>
 class List
 {
 protected:
-	Node<T>* head;
-	Node<T>* tail;
-	
+	ListNode<T>* head;
+	ListNode<T>* tail;
+
 	/// <summary>
 	/// 获取数据节点.
 	/// </summary>
 	/// <param name="index">The index.</param>
 	/// <returns></returns>
-	Node<T>& GetNodeAt(size_t index)
+	ListNode<T>& GetNodeAt(size_t index)
 	{
-		Node<T>* that = this->head;
+		ListNode<T>* that = this->head;
 		for (int i = 0; i < Length; i++)
 		{
 			if (i == index)
@@ -60,6 +66,23 @@ protected:
 			that = that->_next;
 		}
 		throw length_error("Segement fault");
+	}
+
+	List<T>& RemoveNode(ListNode<T>& that)
+	{
+		ListNode<T>* before = that._before;
+		ListNode<T>* after = that._next;
+		if (before != nullptr)
+		{
+			before->_next = after;
+		}
+		if (after != nullptr)
+		{
+			after->_before = before;
+		}
+		delete &that;
+		Length--;
+		return *this;
 	}
 public:
 
@@ -86,7 +109,7 @@ public:
 	/// <returns></returns>
 	List<T>& Add(T value)
 	{
-		Node<T>* next = new Node<T>();
+		ListNode<T>* next = new ListNode<T>();
 		next->data = value;
 		if (head == nullptr)
 		{
@@ -114,9 +137,32 @@ public:
 
 	List<T>& RemoveAt(size_t index)
 	{
+		ListNode<T>& that = this->GetNodeAt(index);
+		RemoveNode(that);
+		return *this;
 	}
 
+	List<T>& Remove(std::function<bool(T&)> predicate)
+	{
+		ListNode<T>* that = this->head;
+		for (int i = 0; i < Length; i++)
+		{
+			if (predicate(that->data))
+			{
+				RemoveNode(*that);
+			}
+			that = that->_next;
+		}
+		return *this;
+	}
 
-
-
+	List<T>& ForEach(std::function<void(T)> action)
+	{
+		ListNode<T>* that = this->head;
+		for (int i = 0; i < Length; i++)
+		{
+			action(that->data);
+			that = that->_next;
+		}
+	}
 };
