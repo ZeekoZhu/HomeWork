@@ -76,9 +76,18 @@ protected:
 		{
 			before->_next = after;
 		}
+		else
+		{
+			this->head = after;
+		}
+
 		if (after != nullptr)
 		{
 			after->_before = before;
+		}
+		else
+		{
+			this->tail = before;
 		}
 		delete &that;
 		Length--;
@@ -96,9 +105,16 @@ public:
 	/// </summary>
 	List()
 	{
+		Total++;
 		cout << "Init a List!" << endl;
 		head = tail = nullptr;
 		Length = 0;
+	}
+
+	~List()
+	{
+		Total--;
+		cout << "list count : " << Total;
 	}
 
 
@@ -155,8 +171,13 @@ public:
 		}
 		return *this;
 	}
-
-	List<T>& ForEach(std::function<void(T)> action)
+	
+	/// <summary>
+	/// 对集合中所有元素执行操作
+	/// </summary>
+	/// <param name="action">The action.</param>
+	/// <returns></returns>
+	List<T>& ForEach(std::function<void(T&)> action)
 	{
 		ListNode<T>* that = this->head;
 		for (int i = 0; i < Length; i++)
@@ -164,5 +185,31 @@ public:
 			action(that->data);
 			that = that->_next;
 		}
+		return *this;
 	}
+
+	
+	/// <summary>
+	/// 参见 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+	/// </summary>
+	/// <param name="action">The action.</param>
+	/// <returns></returns>
+	template <typename TRes>
+	List<T>& Map(std::function<TRes(T&)> action)
+	{
+		List<TRes>* result = new List<TRes>();
+		ListNode<T>* that = this->head;
+		for (int i = 0; i < Length; i++)
+		{
+			TRes temp = action(that->data);
+			result->Add(temp);
+			that = that->_next;
+		}
+
+		return *result;
+	}
+
+	static int Total;
 };
+
+template <typename T> int List<T>::Total = 0;
