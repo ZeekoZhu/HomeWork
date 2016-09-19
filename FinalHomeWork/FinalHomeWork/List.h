@@ -161,17 +161,55 @@ public:
 	List<T>& Remove(std::function<bool(T&)> predicate)
 	{
 		ListNode<T>* that = this->head;
-		for (int i = 0; i < Length; i++)
+		ListNode<T>* next = nullptr;
+		while (that->_next != nullptr)
 		{
+			next = that->_next;
 			if (predicate(that->data))
 			{
 				RemoveNode(*that);
 			}
-			that = that->_next;
+			that = next;
 		}
 		return *this;
 	}
-	
+
+	List<T>& Clear()
+	{
+		ListNode<T>* that = this->head;
+		ListNode<T>* next = nullptr;
+		while (that != nullptr)
+		{
+			next = that->_next;
+			RemoveNode(*that);
+			that = next;
+		}
+		return *this;
+	}
+
+	List<T>& InsertAt(T value, int index)
+	{
+		if (index < 0 || index > Length)
+		{
+			throw length_error("Segement fault!");
+		}
+		else if (index == Length)
+		{
+			this->Add(value);
+		}
+		else
+		{
+			ListNode<T>* target = new ListNode<T>();
+			target->data = value;
+			ListNode<T>& that = this->GetNodeAt(index);
+			target->_before = that._before;
+			that._before = target;
+			target->_next = &that;
+			this->Length++;
+		}
+		return *this;
+	}
+
 	/// <summary>
 	/// 对集合中所有元素执行操作
 	/// </summary>
@@ -180,7 +218,7 @@ public:
 	List<T>& ForEach(std::function<void(T&)> action)
 	{
 		ListNode<T>* that = this->head;
-		for (int i = 0; i < Length; i++)
+		while (that != nullptr)
 		{
 			action(that->data);
 			that = that->_next;
@@ -188,25 +226,25 @@ public:
 		return *this;
 	}
 
-	
+
 	/// <summary>
 	/// 参见 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
 	/// </summary>
 	/// <param name="action">The action.</param>
 	/// <returns></returns>
 	template <typename TRes>
-	List<T>& Map(std::function<TRes(T&)> action)
+	List<T>* Map(std::function<TRes(T&)> action)
 	{
 		List<TRes>* result = new List<TRes>();
 		ListNode<T>* that = this->head;
-		for (int i = 0; i < Length; i++)
+		while (that != nullptr)
 		{
 			TRes temp = action(that->data);
 			result->Add(temp);
 			that = that->_next;
 		}
 
-		return *result;
+		return result;
 	}
 
 	static int Total;
