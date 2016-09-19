@@ -63,6 +63,7 @@ table {
     background: #fe6103 none repeat scroll 0 0;
 }
 
+
 .tab-wrapper{
     width:1050px;
     height: 100%;
@@ -78,9 +79,6 @@ table {
     text-decoration: none;
     font-size: 14px;
     font-weight: bold;
-    display: block;
-    height: 100%;
-    vertical-align: middle;
 }
 
 .tab:hover{
