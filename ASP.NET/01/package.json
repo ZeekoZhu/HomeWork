@@ -1,0 +1,13 @@
+{
+  "name": "task01",
+  "version": "1.0.0",
+  "description": "home work to pratice html",
+  "main": "index.js",
+  "scripts": {
+    "start": "lite"
+  },
+  "author": "zeeko zhu",
+  "devDependencies": {
+    "lite-server": "^2.2.2"
+  }
+}
