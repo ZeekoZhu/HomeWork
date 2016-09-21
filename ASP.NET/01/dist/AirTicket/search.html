@@ -6,9 +6,52 @@
     </div>
     <div class="search-process">
         <div class="search-process-wrapper">
-            <span class="search-process-item">提交订单</span>
+            <span class="search-process-item search-process-active">提交订单</span>
             <span class="search-process-item">确认并支付</span>
             <span class="search-process-item">成功</span>
         </div>
     </div>
 </div>
+<div class="search-filter-form airticket-panel">
+    <div class="search-form-col">
+        <div class="search-form-control">
+            <label for="origin">出发城市:</label>
+            <input id="origin" class="airticket-input" type="text">
+        </div>
+        <div class="search-form-control">
+            <label for="destination">到达城市:</label>
+            <input id="destination" class="airticket-input" type="text">
+        </div>
+    </div>
+    <div class="search-form-col">
+        <div class="search-form-control">
+            <label for="date">出发时间:</label>
+            <input id="date" class="airticket-input" type="datetime">
+        </div>
+        <div class="search-form-control">
+            <input class="airticket-btn search-query-btn" type="button" value="查询">
+        </div>
+    </div>
+</div>
+
+<div class="search-filter-time airticket-panel">
+    <div class="search-form-control">
+        <label>起飞时间：</label>
+        <input type="button" class="airticket-btn search-filter-time-all" value="全部">
+        <input type="checkbox"><label>早晨（0~6点）</label>
+        <input type="checkbox"><label>上午(6~12点）</label>
+        <input type="checkbox"><label>中午(12~13点）</label>
+        <input type="checkbox"><label>下午(13~18点）</label>
+        <input type="checkbox"><label>晚上(18~24点）</label>
+    </div>
+</div>
+
+<p class="airticket-panel-warning search-important">
+    重要提示：<br> 1、以下票面价不包含机场建设费、燃油附加税<br> 2、特殊舱位价格变化快，以下特殊舱位价格仅作参考，以订座成功后价格为准。
+</p>
+
+<table>
+    <thead>
+        th*7
+    </thead>
+</table>

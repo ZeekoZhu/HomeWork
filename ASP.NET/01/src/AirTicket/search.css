@@ -1,12 +1,11 @@
-
-.search-header{
+.search-header {
     padding-top: 20px;
-    padding-left:12px;
+    padding-left: 12px;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
+    align-items: center;
 }
-
 
 .search-airline, .china-airline {
     height: 34px;
@@ -21,15 +20,108 @@
 .search-airline {
     background-color: #a48a7b;
 }
+
 .china-airline {
     background-color: #b98468;
 }
 
-.search-process-item {
-    font-size: 22px;
-    color:#bbbbbb;
+.search-process-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 12px;
 }
 
-.search-process-active{
-    color:#ffa217;
+.search-process-item {
+    font-size: 18px;
+    color: #bbbbbb;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-left: 8px;
+}
+
+.search-process-item::before {
+    content: ' ';
+    width: 35px;
+    height: 35px;
+    border: #bbbbbb solid 3px;
+    border-radius: 35px;
+    display: inline-block;
+    margin-right: 4px;
+}
+
+.search-process-item:nth-child(1)::after {
+    content: '1';
+    display: inline-block;
+    font-size: 18px;
+    position: relative;
+    left: -102px;
+}
+
+.search-process-item:nth-child(2)::after {
+    content: '2';
+    display: inline-block;
+    font-size: 18px;
+    position: relative;
+    left: -119px;
+}
+
+.search-process-item:nth-child(3)::after {
+    content: '3';
+    display: inline-block;
+    font-size: 18px;
+    position: relative;
+    left: -65px;
+}
+
+.search-process-active {
+    color: #ffa217;
+}
+
+.search-process-active::before {
+    border: #ffa217 solid 3px;
+}
+
+.search-filter-form {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 30px 12px 0 12px;
+}
+
+.search-form-col{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.search-form-control{
+    margin: 5px 0 5px 14px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-form-control label{
+    color: #848484;
+}
+
+.search-query-btn{
+    margin-left: 64px;
+}
+
+.search-filter-time {
+    margin: 30px 12px 0 12px;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.search-important{
+    margin: 30px 12px 0 12px;
 }
