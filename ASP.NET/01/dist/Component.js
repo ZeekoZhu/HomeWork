@@ -21,6 +21,7 @@ var Component = function () {
             success: function success(data) {
                 _this.Content = data;
                 $(_this.Container).html(_this.Content);
+                history.pushState(_this.HistoryState, '', _this.Url);
             }
         });
     };

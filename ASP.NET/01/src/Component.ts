@@ -22,8 +22,9 @@ class Component {
             success: function (data) {
                 _this.Content = data;
                 $(_this.Container).html(_this.Content);
+                history.pushState(_this.HistoryState, '', _this.Url);
             }
-        })
+        });
     }
 }
 

@@ -1,0 +1,35 @@
+
+.search-header{
+    padding-top: 20px;
+    padding-left:12px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+
+.search-airline, .china-airline {
+    height: 34px;
+    width: 140px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    text-align: left;
+    font-weight: bold;
+}
+
+.search-airline {
+    background-color: #a48a7b;
+}
+.china-airline {
+    background-color: #b98468;
+}
+
+.search-process-item {
+    font-size: 22px;
+    color:#bbbbbb;
+}
+
+.search-process-active{
+    color:#ffa217;
+}
