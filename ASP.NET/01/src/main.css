@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -41,147 +40,177 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+
 .header {
-  width: 1050px;
-  height: 100px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto;
+    width: 1050px;
+    height: 100px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
 }
 
 .navigator {
-  width: 100%;
-  height: 35px;
-  background: #fe6103 none repeat scroll 0 0;
+    width: 100%;
+    height: 35px;
+    background: #fe6103 none repeat scroll 0 0;
 }
 
 .tab-wrapper {
-  width: 1050px;
-  height: 100%;
-  margin: 0 auto;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
+    width: 1050px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .tab {
-  flex: 1 0 auto;
-  color: white;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 35px;
-  text-align: center;
+    flex: 1 0 auto;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 35px;
+    text-align: center;
 }
 
-.tab:hover,
-.tab-active {
-  background: #b74d0c none repeat scroll 0 0;
+.tab:hover, .tab-active {
+    background: #b74d0c none repeat scroll 0 0;
 }
 
 .banner {
-  margin-top: 5px;
-  margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
 .banner-item {
-  width: 100%;
-  height: 300px;
+    width: 100%;
+    height: 300px;
 }
 
 .main {
-  width: 1050px;
-  margin:0 auto;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
+    width: 1050px;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
 }
 
-.main-header{
-  background: #f2f2f2;
-  width:810px;
-  height:36px;
-  border: rgb(211, 211, 211) solid 1px;
-  line-height: 36px;
+.main-header {
+    background: linear-gradient(0deg, #f1f1f1, #fff);
+    width: 810px;
+    height: 36px;
+    border: rgb(211, 211, 211) solid 1px;
+    line-height: 36px;
 }
 
-.main-header>h3{
-  color: rgb(255, 102, 0);
-  font-weight: bold;
+.main-header > h3 {
+    display: inline;
+    color: rgb(255, 102, 0);
+    font-weight: bold;
+    font-size: 16px;
 }
 
-.main-container{
-  width: 810px;
-  border-left: rgb(211, 211, 211) solid 1px;
-  border-right: rgb(211, 211, 211) solid 1px;
-  border-bottom: rgb(211, 211, 211) solid 1px;
+.main-header > h3::before {
+    margin-left: 12px;
+    margin-right: 2px;
+    content: ' ';
+    display: inline-block;
+    border: #ff6800 solid 3px;
+    border-radius: 6px;
+    background: white;
+    height: 6px;
+    width: 6px;
 }
 
-.main-sidebar{
-  width: 229px;  
-}
-.main-sidebar-header{
-  border: rgb(211, 211, 211) solid 1px;
-  background: #f2f2f2;
-  height: 45px;
-}
-.main-sidebar-header > h3{
-  color: #b2b2b2;
-  font-weight: bold;
-  line-height: 45px;
-  margin-left: 12px;
+.main-container {
+    width: 810px;
+    border-left: rgb(211, 211, 211) solid 1px;
+    border-right: rgb(211, 211, 211) solid 1px;
+    border-bottom: rgb(211, 211, 211) solid 1px;
 }
 
-.main-sidebar-list{
-  border-top: rgb(211, 211, 211) solid 1px;
-  border-left: rgb(211, 211, 211) solid 1px;
-  border-right: rgb(211, 211, 211) solid 1px;
+.main-sidebar {
+    width: 229px;
 }
 
-.main-sidebar-item{
-  padding:12px 12px 0 12px;
+.main-sidebar-header {
+    border: rgb(211, 211, 211) solid 1px;
+    background: linear-gradient(0deg, #f1f1f1, #fff);
+    height: 36px;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.main-sidebar-header > h3 {
+    color: #b2b2b2;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 36px;
+    margin-left: 12px;
+}
+
+.main-sidebar-list {
+    border-bottom: rgb(211, 211, 211) solid 1px;
+    border-left: rgb(211, 211, 211) solid 1px;
+    border-right: rgb(211, 211, 211) solid 1px;
+}
+
+.main-sidebar-item {
+    padding: 12px 12px 0 12px;
 }
 
 .main-sidebar-item p {
-  font-size: 12px;
-  font-family: "宋体";
-  color:#777777;
+    font-size: 12px;
+    font-family: "宋体";
+    color: #777777;
 }
 
-.main-sidebar-details{
-  margin-top:14px;
-  width: 100%;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-.main-sidebar-discount{
-  color:#ff6800;
-  font-size: 12px;
-  /*font-weight: bold;*/
+.main-sidebar-details {
+    margin-top: 25px;
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
-.main-sidebar-discount::after{
-  content: "折起";
-  font-size: 12px;
-  font-family: "宋体";
-  color:#777777;
-  font-weight: 400;
-  vertical-align: top;
+.main-sidebar-item:not(:last-child) > .main-sidebar-details {
+    border-bottom: 1px dashed #777777;
 }
 
-.main-sidebar-sold{
-  color: #ff6800;
-  font-family: "宋体";  
-  font-size: 12px;
+.main-sidebar-discount {
+    color: #ff6800;
+    font-size: 22px;
+    font-weight: bold;
+    top: -4px;
+    position: relative;
 }
 
-.main-sidebar-sold::before{
-  content: "已售";
-  color:#777777;
+.main-sidebar-discount::after {
+    content: "折起";
+    top: 4px;
+    position: relative;
+    font-size: 12px;
+    font-family: "宋体";
+    color: #777777;
+    font-weight: 400;
+    vertical-align: top;
+}
+
+.main-sidebar-sold {
+    color: #ff6800;
+    font-family: "宋体";
+    font-size: 12px;
+}
+
+.main-sidebar-sold::before {
+    content: "已售";
+    color: #777777;
 }
