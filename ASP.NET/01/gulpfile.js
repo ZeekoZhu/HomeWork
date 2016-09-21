@@ -136,4 +136,4 @@ gulp.task('dev', ['watch', 'lite-server']);
 /**
  * build files
  */
-gulp.task('build', ['jslint', 'minify-js', 'minify-css', 'html']);
+gulp.task('build', ['minify-js', 'minify-css', 'html']);
