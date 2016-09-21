@@ -4,7 +4,7 @@
   "description": "home work to pratice html",
   "main": "index.js",
   "scripts": {
-    "start": "lite"
+    "start": "lite-server"
   },
   "author": "zeeko zhu",
   "devDependencies": {
