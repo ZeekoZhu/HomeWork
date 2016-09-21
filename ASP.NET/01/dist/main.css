@@ -44,15 +44,12 @@ table {
 .header {
     width: 1050px;
     height: 100px;
-    display: -webkit-box;
-    display: -ms-flexbox;
+    display: -moz-box;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+    -moz-box-align: center;
+    align-items: center;
     margin: 0 auto;
 }
 
@@ -66,23 +63,18 @@ table {
     width: 1050px;
     height: 100%;
     margin: 0 auto;
-    display: -webkit-box;
-    display: -ms-flexbox;
+    display: -moz-box;
     display: flex;
-    -ms-flex-flow: row nowrap;
-        flex-flow: row nowrap;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-flow: row nowrap;
+    -moz-box-pack: center;
+    justify-content: center;
+    -moz-box-align: center;
+    align-items: center;
 }
 
 .tab {
-    -webkit-box-flex: 1;
-        -ms-flex: 1 0 auto;
-            flex: 1 0 auto;
+    -moz-box-flex: 1;
+    flex: 1 0 auto;
     color: white;
     text-decoration: none;
     font-size: 14px;
@@ -108,18 +100,15 @@ table {
 .main {
     width: 1050px;
     margin: 0 auto;
-    display: -webkit-box;
-    display: -ms-flexbox;
+    display: -moz-box;
     display: flex;
-    -ms-flex-flow: row nowrap;
-        flex-flow: row nowrap;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    flex-flow: row nowrap;
+    -moz-box-pack: justify;
+    justify-content: space-between;
 }
 
 .main-header {
-    background: -webkit-linear-gradient(bottom, #f1f1f1, #fff);
+    background: -moz-linear-gradient(bottom, #f1f1f1, #fff);
     background: linear-gradient(0deg, #f1f1f1, #fff);
     width: 810px;
     height: 36px;
@@ -159,14 +148,12 @@ table {
 
 .main-sidebar-header {
     border: rgb(211, 211, 211) solid 1px;
-    background: -webkit-linear-gradient(bottom, #f1f1f1, #fff);
+    background: -moz-linear-gradient(bottom, #f1f1f1, #fff);
     background: linear-gradient(0deg, #f1f1f1, #fff);
     height: 36px;
-    display: -webkit-box;
-    display: -ms-flexbox;
+    display: -moz-box;
     display: flex;
-    -ms-flex-flow: row nowrap;
-        flex-flow: row nowrap;
+    flex-flow: row nowrap;
 }
 
 .main-sidebar-header > h3 {
@@ -198,17 +185,13 @@ table {
     padding-bottom: 10px;
     margin-bottom: 5px;
     width: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
+    display: -moz-box;
     display: flex;
-    -ms-flex-flow: row nowrap;
-        flex-flow: row nowrap;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+    flex-flow: row nowrap;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+    -moz-box-align: start;
+    align-items: flex-start;
 }
 
 .main-sidebar-item:not(:last-child) > .main-sidebar-details {
