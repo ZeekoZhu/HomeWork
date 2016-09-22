@@ -1,8 +1,9 @@
 var Component = (function () {
-    function Component(Url, Container, HistoryState) {
+    function Component(Url, Container, HistoryState, Scripts) {
         this.Url = Url;
         this.Container = Container;
         this.HistoryState = HistoryState;
+        this.Scripts = Scripts;
     }
     Component.prototype.Load = function () {
         var _this = this;
@@ -20,6 +21,7 @@ var Component = (function () {
                 _this.Content = data;
                 $(_this.Container).html(_this.Content);
                 history.pushState(_this.HistoryState, '', _this.Url);
+                require(_this.Scripts);
             }
         });
     };

@@ -31,7 +31,6 @@
 .china-airline {
     background-color: #b98468;
 }
-
 .search-process-wrapper {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -298,4 +297,9 @@
             transform: rotate(90deg);
     display: inline-block;
     padding-left: 4px;
+}
+
+.search-process,
+.search-result{
+    display: none;
 }

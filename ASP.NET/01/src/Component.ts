@@ -4,7 +4,8 @@ class Component {
     public constructor(
         public Url: string,
         public Container: Element,
-        public HistoryState: HistoryState) {
+        public HistoryState: HistoryState,
+        public Scripts: Array<string>) {
     }
 
     Load() {
@@ -23,6 +24,7 @@ class Component {
                 _this.Content = data;
                 $(_this.Container).html(_this.Content);
                 history.pushState(_this.HistoryState, '', _this.Url);
+                require(_this.Scripts);
             }
         });
     }
