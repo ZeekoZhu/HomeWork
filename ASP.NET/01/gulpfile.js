@@ -73,7 +73,7 @@ gulp.task('minify-js', function () {
 gulp.task('minify-css', function () {
     return gulp.src(CSS_SRC)
         .pipe(autoPrefix({
-            browsers: ['> 1% in CN'],
+            browsers: ['> 5% in CN'],
             cascade: false
         }))
         .pipe(gulp.dest(DEST))

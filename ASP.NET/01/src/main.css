@@ -182,7 +182,6 @@ table {
     border-bottom: rgb(211, 211, 211) solid 1px;
     border-left: rgb(211, 211, 211) solid 1px;
     border-right: rgb(211, 211, 211) solid 1px;
-
 }
 
 .main-sidebar-item {
@@ -247,14 +246,14 @@ table {
     color: #777777;
 }
 
-.airticket-input{
+.airticket-input {
     border: rgb(211, 211, 211) solid 1px;
     border-radius: 2px;
     height: 26px;
     margin-left: 4px;
 }
 
-.airticket-btn{
+.airticket-btn {
     background-image: linear-gradient(0deg, #fd9802, #f7bb66);
     color: white;
     height: 26px;
@@ -263,7 +262,8 @@ table {
     cursor: pointer;
     padding: 0 12px;
 }
-.airticket-panel{
+
+.airticket-panel {
     padding: 12px;
     background-color: #f5f5f5;
     border: rgb(211, 211, 211) solid 1px;
@@ -271,7 +271,7 @@ table {
     color: #848484;
 }
 
-.airticket-panel-warning{
+.airticket-panel-warning {
     padding: 12px;
     background-color: #f9e9e1;
     border: #f6dfd4 solid 1px;
@@ -280,12 +280,52 @@ table {
     line-height: 22px;
 }
 
-.footer-tabbar{
+.footer-tabbar {
     margin-top: 50px;
+    margin-bottom: 20px;
     width: 100%;
     height: 36px;
     background-color: #ff6004;
-    color:white;
+    color: white;
     font-size: 14px;
     font-weight: bold;
+}
+
+.footer-tab {
+    text-decoration: none;
+    color: white;
+    line-height: 36px;
+}
+.footer-col:nth-child(1),
+.footer-tab:nth-child(1){
+    width: 25%;
+}
+.footer-col:not(:first-child),
+.footer-tab:not(:first-child){
+    text-align: center;
+    width: 15%;
+}
+.footer-tab:not(:first-child):hover {
+    background-color: #b74d0c;
+}
+
+.footer-details{
+    width: 1050px;
+    margin: 0 auto 30px auto;
+    display: flex;
+    flex-flow: row nowrap;
+    font-size: 12px;
+    font-weight: bold;
+    color: rgb(163, 163, 163);
+}
+
+.footer-col{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    line-height: 18px;
+}
+
+.footer-important{
+    color:red;
 }

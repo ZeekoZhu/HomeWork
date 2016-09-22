@@ -1,13 +1,17 @@
 .search-header {
     padding-top: 20px;
     padding-left: 12px;
-    display: -moz-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-flow: row nowrap;
-    -moz-box-pack: justify;
-    justify-content: space-between;
-    -moz-box-align: center;
-    align-items: center;
+    -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 .search-airline, .china-airline {
@@ -29,26 +33,34 @@
 }
 
 .search-process-wrapper {
-    display: -moz-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-flow: row nowrap;
-    -moz-box-pack: justify;
-    justify-content: space-between;
-    -moz-box-align: center;
-    align-items: center;
+    -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     margin-right: 12px;
 }
 
 .search-process-item {
     font-size: 18px;
     color: #bbbbbb;
-    display: -moz-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-flow: row nowrap;
-    -moz-box-pack: center;
-    justify-content: center;
-    -moz-box-align: center;
-    align-items: center;
+    -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     margin-left: 8px;
 }
 
@@ -95,34 +107,46 @@
 }
 
 .search-filter-form {
-    display: -moz-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-flow: row nowrap;
-    -moz-box-pack: start;
-    justify-content: flex-start;
-    -moz-box-align: center;
-    align-items: center;
+    -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     margin: 30px 12px 0 12px;
 }
 
 .search-form-col {
-    display: -moz-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-flow: column nowrap;
-    -moz-box-pack: justify;
-    justify-content: space-between;
-    align-content: center;
+    -ms-flex-flow: column nowrap;
+        flex-flow: column nowrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-line-pack: center;
+        align-content: center;
 }
 
 .search-form-control {
     margin: 5px 0 5px 14px;
-    display: -moz-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-flow: row nowrap;
-    -moz-box-pack: justify;
-    justify-content: space-between;
-    -moz-box-align: center;
-    align-items: center;
+    -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 .search-form-control label {
@@ -135,9 +159,11 @@
 
 .search-filter-time {
     margin: 30px 12px 0 12px;
-    display: -moz-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-flow: row nowrap;
+    -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
 }
 
 .search-important {
@@ -157,9 +183,11 @@
 .search-result-row {
     width: 100%;
     display: block;
-    display: -moz-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-flow: row nowrap;
+    -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
     color: #848484;
     font-size: 14px;
     line-height: 18px;
@@ -180,11 +208,13 @@
     padding-left: 4px;
 }
 .search-result-row th:nth-child(1), .search-result-row td:nth-child(1) {
+    display: block;
     text-align: left;
     width: 16%;
 }
 
 .search-result-row th:not(:nth-child(1)), .search-result-row td:not(:nth-child(1)) {
+    display: block;
     text-align: center;
     width: 14%;
 }
@@ -193,24 +223,32 @@
 .search-result-row td:nth-child(3),
 .search-result-row td:nth-child(4),
 .search-result-row td:nth-child(7){
-        display: -moz-box;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-flow: column nowrap;
-        -moz-box-pack: center;
-        justify-content: center;
-        -moz-box-align: center;
-        align-items: center;
+        -ms-flex-flow: column nowrap;
+            flex-flow: column nowrap;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
 }
 
 
 .search-result-row td:nth-child(5){
-    display: -moz-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-flow: row nowrap;
-    -moz-box-pack: justify;
-    justify-content: space-between;
-    -moz-box-align: center;
-    align-items: center;
+    -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 .search-result-price{
     color: #ba4442;
@@ -223,13 +261,17 @@
 }
 
 .search-result-row td:nth-child(6){
-    display: -moz-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-flow: row nowrap;
-    -moz-box-pack: center;
-    justify-content: center;
-    -moz-box-align: center;
-    align-items: center;
+    -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 .search-result-row td:nth-child(6) span{
     color: white;
@@ -253,9 +295,7 @@
 .search-result-position-expand::after {
     content: '»';
     -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    transform: rotate(90deg);
+            transform: rotate(90deg);
     display: inline-block;
     padding-left: 4px;
 }
