@@ -44,14 +44,8 @@ table {
 .header {
     width: 1050px;
     height: 100px;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
     justify-content: space-between;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
     margin: 0 auto;
 }
@@ -66,22 +60,13 @@ table {
     width: 1050px;
     height: 100%;
     margin: 0 auto;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-flow: row nowrap;
     flex-flow: row nowrap;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
 }
 
 .tab {
-    -webkit-box-flex: 1;
-    -ms-flex: 1 0 auto;
     flex: 1 0 auto;
     color: white;
     text-decoration: none;
@@ -108,18 +93,12 @@ table {
 .main {
     width: 1050px;
     margin: 0 auto;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-flow: row nowrap;
     flex-flow: row nowrap;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
     justify-content: space-between;
 }
 
 .main-header {
-    background: -webkit-linear-gradient(bottom, #f1f1f1, #fff);
     background: linear-gradient(0deg, #f1f1f1, #fff);
     width: 810px;
     height: 36px;
@@ -160,13 +139,9 @@ table {
 
 .main-sidebar-header {
     border: rgb(211, 211, 211) solid 1px;
-    background: -webkit-linear-gradient(bottom, #f1f1f1, #fff);
     background: linear-gradient(0deg, #f1f1f1, #fff);
     height: 36px;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-flow: row nowrap;
     flex-flow: row nowrap;
 }
 
@@ -199,16 +174,9 @@ table {
     padding-bottom: 10px;
     margin-bottom: 5px;
     width: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-flow: row nowrap;
     flex-flow: row nowrap;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
     justify-content: space-between;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
     align-items: flex-start;
 }
 
@@ -328,4 +296,64 @@ table {
 
 .footer-important{
     color:red;
+}
+
+.ticket-process-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 12px;
+}
+
+.ticket-process-item {
+    font-size: 18px;
+    color: #bbbbbb;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-left: 8px;
+}
+
+.ticket-process-item::before {
+    content: ' ';
+    width: 35px;
+    height: 35px;
+    border: #bbbbbb solid 3px;
+    border-radius: 35px;
+    display: inline-block;
+    margin-right: 4px;
+}
+
+.ticket-process-item:nth-child(1)::after {
+    content: '1';
+    display: inline-block;
+    font-size: 18px;
+    position: relative;
+    left: -102px;
+}
+
+.ticket-process-item:nth-child(2)::after {
+    content: '2';
+    display: inline-block;
+    font-size: 18px;
+    position: relative;
+    left: -119px;
+}
+
+.ticket-process-item:nth-child(3)::after {
+    content: '3';
+    display: inline-block;
+    font-size: 18px;
+    position: relative;
+    left: -65px;
+}
+
+.ticket-process-active {
+    color: #ffa217;
+}
+
+.ticket-process-active::before {
+    border: #ffa217 solid 3px;
 }

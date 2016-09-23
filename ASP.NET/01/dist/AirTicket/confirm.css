@@ -1,0 +1,111 @@
+.confirm-header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-content: center;
+    padding: 20px 12px;
+}
+
+.confirm-header-title {
+    color: #333333;
+    font-weight: bold;
+    font-size: 36px;
+}
+
+.confirm-header {
+    border-bottom: rgb(211, 211, 211) solid 1px;
+}
+
+.ticket-process {
+    display: block;
+}
+
+.confirm-info {
+    color: #848484;
+}
+
+.confirm-row {
+    margin: 12px;
+}
+
+/*.confirm-ticket-info, .confirm-passengers {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: stretch;
+    width: calc(100% - 24px);
+}*/
+
+.confirm-info-row {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: stretch;
+    width: calc(100% - 24px);
+}
+
+.confirm-info-title {
+    width: 110px;
+    text-align: right;
+    margin-right: 0;
+}
+
+.confirm-info-content {
+    flex: 1 0 auto;
+}
+
+.confirm-passengers,.confirm-passengers table,thead,tr,th,tbody,td {
+    display: block;
+}
+
+
+.confirm-ticket-details {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+}
+
+.confirm-info-time {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-left: 12px;
+}
+
+.confirm-ticket-details .confirm-row:first-child {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: stretch;
+    height: 38px;
+}
+
+.confirm-info-flight {
+    font-size: 32px;
+}
+
+.confirm-info-flight span:first-child {
+    color: #333333;
+}
+
+.confirm-info-flight span:last-child {
+    color: #3d7b99;
+}
+
+.confirm-pass-row {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    text-align: center;
+    line-height: 26px;
+}
+
+.confirm-pass-row th:not(:nth-child(3)){
+    flex: 1 0 auto;
+}
+
+.confirm-pass-row th:nth-child(3){
+    flex: 2 0 auto;
+}

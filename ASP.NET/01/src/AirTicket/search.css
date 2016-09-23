@@ -31,79 +31,6 @@
 .china-airline {
     background-color: #b98468;
 }
-.search-process-wrapper {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-flow: row nowrap;
-        flex-flow: row nowrap;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    margin-right: 12px;
-}
-
-.search-process-item {
-    font-size: 18px;
-    color: #bbbbbb;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-flow: row nowrap;
-        flex-flow: row nowrap;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    margin-left: 8px;
-}
-
-.search-process-item::before {
-    content: ' ';
-    width: 35px;
-    height: 35px;
-    border: #bbbbbb solid 3px;
-    border-radius: 35px;
-    display: inline-block;
-    margin-right: 4px;
-}
-
-.search-process-item:nth-child(1)::after {
-    content: '1';
-    display: inline-block;
-    font-size: 18px;
-    position: relative;
-    left: -102px;
-}
-
-.search-process-item:nth-child(2)::after {
-    content: '2';
-    display: inline-block;
-    font-size: 18px;
-    position: relative;
-    left: -119px;
-}
-
-.search-process-item:nth-child(3)::after {
-    content: '3';
-    display: inline-block;
-    font-size: 18px;
-    position: relative;
-    left: -65px;
-}
-
-.search-process-active {
-    color: #ffa217;
-}
-
-.search-process-active::before {
-    border: #ffa217 solid 3px;
-}
 
 .search-filter-form {
     display: -webkit-box;
@@ -299,7 +226,7 @@
     padding-left: 4px;
 }
 
-.search-process,
+.ticket-process,
 .search-result{
     display: none;
 }
