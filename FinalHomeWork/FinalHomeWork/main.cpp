@@ -1,35 +1,46 @@
 #include <iostream>
-#include "List.h"
+#include "Collection.h"
+#include <string>
+#include <math.h>
 
 using namespace std;
 
+double ConvertOct(int, string);
+
 int main()
 {
-	cout << "Hello Fucking man!";
-	List<int> list;
-	list.Add(5).Add(23).Add(34);
-	cout << endl;
-	list.Map<int>([](int i)->int { return ++i; })
-		->ForEach([](int& i)-> void
-	{
-		cout << i << " ";
-	})
-		.RemoveAt(1)
-		.Remove([](int& i) -> bool
-	{
-		return i == 5;
-	})
-		.Clear()
-		.InsertAt(233, 0)
-
-		.Add(12).Add(23).Add(44)
-		.Where([](int& i)-> bool
-	{
-		return i % 2 != 0;
-	})
-		->ForEach([](int& i)-> void
-	{
-		cout << endl << i << " ";
-	});
+	cout << ConvertOct(2, "111");
 	return 0;
+}
+
+int ConvertToOctD(char c)
+{
+	if (c >= '0'&&c <= '9')
+	{
+		return c - '0';
+	}
+	else
+	{
+		return c - 'a' + 10;
+	}
+}
+double ConvertOct(int M, string x)
+{
+	Stack<char> reverse;
+	for (char n : x)
+	{
+		reverse.Push(n);
+	}
+	double res = 0;
+	for (int i = 0; reverse.Length > 0; i++)
+	{
+		res += (ConvertToOctD(reverse.Pop()))*pow(M, i);
+	}
+
+	return res;
+}
+
+string FromOctTo(int M, int x)
+{
+
 }

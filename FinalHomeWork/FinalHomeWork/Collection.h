@@ -2,30 +2,34 @@
 #include <iostream>
 #include <functional>
 
+#ifndef MYLIST_H
+#define MYLIST_H
 template <typename T> class List;
+template <typename T> class Stack;
 
 /// <summary>
 /// 线性结构节点类
 /// </summary>
 template <typename T>
-class ListNode
+class Node
 {
 	friend class List<T>;
+	friend class Stack<T>;
 public:
 	static int _total;
 protected:
-	ListNode<T>* _before;
-	ListNode<T>* _next;
+	Node<T>* _before;
+	Node<T>* _next;
 	T data;
-	ListNode()
+	Node()
 	{
 		_before = _next = nullptr;
 		_total++;
 	}
-	~ListNode()
+	~Node()
 	{
 		_total--;
-		cout << endl << "delete a node : " << ListNode<T>::_total;
+		cout << endl << "delete a node : " << Node<T>::_total;
 	}
 };
 
@@ -34,7 +38,7 @@ protected:
 /// 全部的未销毁的节点个数
 /// </summary>
 template <typename T>
-int ListNode<T>::_total = 0;
+int Node<T>::_total = 0;
 
 
 
@@ -46,17 +50,17 @@ template <typename T>
 class List
 {
 protected:
-	ListNode<T>* head;
-	ListNode<T>* tail;
+	Node<T>* head;
+	Node<T>* tail;
 
 	/// <summary>
 	/// 获取数据节点.
 	/// </summary>
 	/// <param name="index">The index.</param>
 	/// <returns></returns>
-	ListNode<T>& GetNodeAt(size_t index)
+	Node<T>& GetNodeAt(size_t index)
 	{
-		ListNode<T>* that = this->head;
+		Node<T>* that = this->head;
 		for (int i = 0; i < Length; i++)
 		{
 			if (i == index)
@@ -68,10 +72,10 @@ protected:
 		throw length_error("Segement fault");
 	}
 
-	List<T>& RemoveNode(ListNode<T>& that)
+	List<T>& RemoveNode(Node<T>& that)
 	{
-		ListNode<T>* before = that._before;
-		ListNode<T>* after = that._next;
+		Node<T>* before = that._before;
+		Node<T>* after = that._next;
 		if (before != nullptr)
 		{
 			before->_next = after;
@@ -125,7 +129,7 @@ public:
 	/// <returns></returns>
 	List<T>& Add(T value)
 	{
-		ListNode<T>* next = new ListNode<T>();
+		Node<T>* next = new Node<T>();
 		next->data = value;
 		if (head == nullptr)
 		{
@@ -153,15 +157,15 @@ public:
 
 	List<T>& RemoveAt(size_t index)
 	{
-		ListNode<T>& that = this->GetNodeAt(index);
+		Node<T>& that = this->GetNodeAt(index);
 		RemoveNode(that);
 		return *this;
 	}
 
 	List<T>& Remove(std::function<bool(T&)> predicate)
 	{
-		ListNode<T>* that = this->head;
-		ListNode<T>* next = nullptr;
+		Node<T>* that = this->head;
+		Node<T>* next = nullptr;
 		while (that->_next != nullptr)
 		{
 			next = that->_next;
@@ -176,8 +180,8 @@ public:
 
 	List<T>& Clear()
 	{
-		ListNode<T>* that = this->head;
-		ListNode<T>* next = nullptr;
+		Node<T>* that = this->head;
+		Node<T>* next = nullptr;
 		while (that != nullptr)
 		{
 			next = that->_next;
@@ -199,9 +203,9 @@ public:
 		}
 		else
 		{
-			ListNode<T>* target = new ListNode<T>();
+			Node<T>* target = new Node<T>();
 			target->data = value;
-			ListNode<T>& that = this->GetNodeAt(index);
+			Node<T>& that = this->GetNodeAt(index);
 			target->_before = that._before;
 			that._before = target;
 			target->_next = &that;
@@ -217,7 +221,7 @@ public:
 	/// <returns></returns>
 	List<T>& ForEach(std::function<void(T&)> action)
 	{
-		ListNode<T>* that = this->head;
+		Node<T>* that = this->head;
 		while (that != nullptr)
 		{
 			action(that->data);
@@ -236,7 +240,7 @@ public:
 	List<T>* Map(std::function<TRes(T&)> action)
 	{
 		List<TRes>* result = new List<TRes>();
-		ListNode<T>* that = this->head;
+		Node<T>* that = this->head;
 		while (that != nullptr)
 		{
 			TRes temp = action(that->data);
@@ -250,7 +254,7 @@ public:
 	List<T>* Where(std::function<bool(T&)> predicate)
 	{
 		List<T>* result = new List<T>();
-		ListNode<T>* that = this->head;
+		Node<T>* that = this->head;
 		while (that != nullptr)
 		{
 			if (predicate(that->data))
@@ -266,3 +270,44 @@ public:
 };
 
 template <typename T> int List<T>::Total = 0;
+
+
+
+template<typename T> class Stack
+{
+private:
+	Node<T>* _top;
+public:
+	int Length;
+	Stack()
+	{
+		Length = 0;
+		_top = nullptr;
+	}
+	Stack<T>& Push(T data)
+	{
+		Node<T>* value = new Node<T>();
+		value->data = data;
+		value->_before = this->_top;
+		Length++;
+		_top = value;
+		return *this;
+	}
+	T Pop()
+	{
+		T result;
+		if (_top != nullptr)
+		{
+			result = _top->data;
+			_top = _top->_before;
+			Length--;
+		}
+		else
+		{
+			throw length_error("Segament Error!");
+		}
+		return result;
+	}
+};
+
+#endif

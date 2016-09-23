@@ -1,7 +1,7 @@
 ﻿#include<iostream>
 #include<fstream>
 #include <string>
-#include "../FinalHomeWork/List.h"
+#include "../FinalHomeWork/Collection.h"
 
 using namespace std;
 
@@ -41,7 +41,7 @@ public:
 
 	Record(string subject, bool gender, string school, double grade, double score)
 	{
-		Subject
+		//Subject
 	}
 
 	void WriteToFile(string path)
@@ -61,5 +61,5 @@ int main()
 {
 	//cout << FuckFibonacci(6, 12);
 	List<Record> records;
-	records.Add();
+	//records.Add();
 }
