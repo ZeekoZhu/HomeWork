@@ -1,0 +1,331 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+
+/* HTML5 display-role reset for older browsers */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.header {
+    width: 1050px;
+    height: 100px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.navigator {
+    width: 100%;
+    height: 35px;
+    background: #fe6103 none repeat scroll 0 0;
+}
+
+.tab-wrapper {
+    width: 1050px;
+    height: 100%;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.tab {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 35px;
+    text-align: center;
+}
+
+.tab:hover, .tab-active {
+    background: #b74d0c none repeat scroll 0 0;
+}
+
+.banner {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.banner-item {
+    width: 100%;
+    height: 300px;
+}
+
+.main {
+    width: 1050px;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.main-header {
+    background: -webkit-linear-gradient(bottom, #f1f1f1, #fff);
+    background: linear-gradient(0deg, #f1f1f1, #fff);
+    width: 810px;
+    height: 36px;
+    border: rgb(211, 211, 211) solid 1px;
+    line-height: 36px;
+}
+
+.main-header > h3 {
+    display: inline;
+    color: rgb(255, 102, 0);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.main-header > h3::before {
+    margin-left: 12px;
+    margin-right: 2px;
+    content: ' ';
+    display: inline-block;
+    border: #ff6800 solid 3px;
+    border-radius: 6px;
+    background: white;
+    height: 6px;
+    width: 6px;
+}
+
+.main-container {
+    width: 810px;
+    border-left: rgb(211, 211, 211) solid 1px;
+    border-right: rgb(211, 211, 211) solid 1px;
+    border-bottom: rgb(211, 211, 211) solid 1px;
+    padding-bottom: 20px;
+}
+
+.main-sidebar {
+    width: 229px;
+}
+
+.main-sidebar-header {
+    border: rgb(211, 211, 211) solid 1px;
+    background: -webkit-linear-gradient(bottom, #f1f1f1, #fff);
+    background: linear-gradient(0deg, #f1f1f1, #fff);
+    height: 36px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+}
+
+.main-sidebar-header > h3 {
+    color: #b2b2b2;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 36px;
+    margin-left: 12px;
+}
+
+.main-sidebar-list {
+    border-bottom: rgb(211, 211, 211) solid 1px;
+    border-left: rgb(211, 211, 211) solid 1px;
+    border-right: rgb(211, 211, 211) solid 1px;
+}
+
+.main-sidebar-item {
+    padding: 12px 12px 0 12px;
+}
+
+.main-sidebar-item p {
+    font-size: 12px;
+    font-family: "宋体";
+    color: #777777;
+}
+
+.main-sidebar-details {
+    margin-top: 25px;
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+
+.main-sidebar-item:not(:last-child) > .main-sidebar-details {
+    border-bottom: 1px dashed #777777;
+}
+
+.main-sidebar-discount {
+    color: #ff6800;
+    font-size: 22px;
+    font-weight: bold;
+    top: -4px;
+    position: relative;
+}
+
+.main-sidebar-discount::after {
+    content: "折起";
+    top: 4px;
+    position: relative;
+    font-size: 12px;
+    font-family: "宋体";
+    color: #777777;
+    font-weight: 400;
+    vertical-align: top;
+}
+
+.main-sidebar-sold {
+    color: #ff6800;
+    font-family: "宋体";
+    font-size: 12px;
+}
+
+.main-sidebar-sold::before {
+    content: "已售";
+    color: #777777;
+}
+
+.airticket-input {
+    border: rgb(211, 211, 211) solid 1px;
+    border-radius: 2px;
+    height: 26px;
+    margin-left: 4px;
+}
+
+.airticket-btn {
+    background-image: linear-gradient(0deg, #fd9802, #f7bb66);
+    color: white;
+    height: 26px;
+    border-radius: 2px;
+    border: #d1861a solid 1px;
+    cursor: pointer;
+    padding: 0 12px;
+}
+
+.airticket-panel {
+    padding: 12px;
+    background-color: #f5f5f5;
+    border: rgb(211, 211, 211) solid 1px;
+    font-size: 14px;
+    color: #848484;
+}
+
+.airticket-panel-warning {
+    padding: 12px;
+    background-color: #f9e9e1;
+    border: #f6dfd4 solid 1px;
+    font-size: 14px;
+    color: #a77e6f;
+    line-height: 22px;
+}
+
+.footer-tabbar {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 36px;
+    background-color: #ff6004;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.footer-tab {
+    text-decoration: none;
+    color: white;
+    line-height: 36px;
+}
+.footer-col:nth-child(1),
+.footer-tab:nth-child(1){
+    width: 25%;
+}
+.footer-col:not(:first-child),
+.footer-tab:not(:first-child){
+    text-align: center;
+    width: 15%;
+}
+.footer-tab:not(:first-child):hover {
+    background-color: #b74d0c;
+}
+
+.footer-details{
+    width: 1050px;
+    margin: 0 auto 30px auto;
+    display: flex;
+    flex-flow: row nowrap;
+    font-size: 12px;
+    font-weight: bold;
+    color: rgb(163, 163, 163);
+}
+
+.footer-col{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    line-height: 18px;
+}
+
+.footer-important{
+    color:red;
+}

@@ -1,0 +1,8 @@
+{
+  "name": "task01",
+  "dependencies": {},
+  "globalDependencies": {
+    "jquery": "registry:dt/jquery#1.10.0+20160908203239",
+    "requirejs": "registry:env/requirejs#2.2.0+20160319062041"
+  }
+}
