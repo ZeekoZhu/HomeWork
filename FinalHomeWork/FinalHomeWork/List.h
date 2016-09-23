@@ -247,6 +247,21 @@ public:
 		return result;
 	}
 
+	List<T>* Where(std::function<bool(T&)> predicate)
+	{
+		List<T>* result = new List<T>();
+		ListNode<T>* that = this->head;
+		while (that != nullptr)
+		{
+			if (predicate(that->data))
+			{
+				result->Add(that->data);
+			}
+			that = that->_next;
+		}
+		return result;
+	}
+
 	static int Total;
 };
 
