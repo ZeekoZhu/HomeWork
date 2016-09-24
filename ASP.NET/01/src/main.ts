@@ -9,6 +9,12 @@ require(['./Component.js'], () => {
         ['./AirTicket/search.js']
     );
 
+    let submitComponent = new Component(
+        '/AirTicket/Submit.html',
+        mainContainer,
+        new HistoryState('submit'),
+        ['']
+    );
     let confirmComponent = new Component(
         './AirTicket/confirm.html',
         mainContainer,
@@ -17,6 +23,7 @@ require(['./Component.js'], () => {
     );
     $().ready(() => {
         // searchComponent.Load();
-        confirmComponent.Load();
+        // confirmComponent.Load();
+        submitComponent.Load();
     });
 });
