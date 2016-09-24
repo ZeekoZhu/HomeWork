@@ -28,6 +28,7 @@
     margin: 12px;
 }
 
+
 /*.confirm-ticket-info, .confirm-passengers {
     display: flex;
     flex-flow: row nowrap;
@@ -54,10 +55,9 @@
     flex: 1 0 auto;
 }
 
-.confirm-passengers,.confirm-passengers table,thead,tr,th,tbody,td {
+.confirm-passengers, .confirm-passengers table, thead, tr, th, tbody, td {
     display: block;
 }
-
 
 .confirm-ticket-details {
     display: flex;
@@ -99,13 +99,67 @@
     align-items: center;
     font-size: 18px;
     text-align: center;
-    line-height: 26px;
+    line-height: 30px;
+    border-top: rgb(211, 211, 211) solid 1px;
 }
 
-.confirm-pass-row th:not(:nth-child(3)){
-    flex: 1 0 auto;
+.confirm-pass-row th:not(:nth-child(3)), .confirm-pass-row td:not(:nth-child(3)) {
+    width: 20%;
+    border-left: rgb(211, 211, 211) solid 1px;
 }
 
-.confirm-pass-row th:nth-child(3){
-    flex: 2 0 auto;
+.confirm-pass-row th:last-child, .confirm-pass-row td:last-child {
+    border-right: rgb(211, 211, 211) solid 1px;
+}
+
+.confirm-pass-row th:nth-child(3), .confirm-pass-row td:nth-child(3) {
+    width: 40%;
+    border-left: rgb(211, 211, 211) solid 1px;
+}
+
+.confirm-pass-tr {
+    background-color: #f5f5f5;
+    border-bottom: rgb(211, 211, 211) solid 1px;
+    font-size: 14px;
+}
+
+.confirm-info-price, .confirm-superpwd {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+.confirm-superpwd input {
+    width: 100px;
+}
+
+.confirm-info-price > span {
+    color: red;
+    font-size: 18px;
+}
+
+.confirm-warning {
+    margin-left: 60px;
+    font-weight: bold;
+}
+
+.confirm-limits {
+    color: red;
+}
+
+.confirm-options {
+    margin-left: 50px;
+}
+
+.confirm-options > input:first-child {
+    font-size: 18px;
+    line-height: 32px;
+}
+
+.confirm-options > input:last-child {
+    color: #333333;
+    font-size: 18px;
+    line-height: 32px;
+    background: linear-gradient(0deg, #f1f1f1, #fff);
+    border: #777 solid 1px;
 }

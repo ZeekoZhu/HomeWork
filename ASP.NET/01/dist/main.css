@@ -224,7 +224,6 @@ table {
 .airticket-btn {
     background-image: linear-gradient(0deg, #fd9802, #f7bb66);
     color: white;
-    height: 26px;
     border-radius: 2px;
     border: #d1861a solid 1px;
     cursor: pointer;

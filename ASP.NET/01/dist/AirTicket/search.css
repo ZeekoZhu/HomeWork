@@ -54,6 +54,7 @@
 
 .search-query-btn {
     margin-left: 64px;
+    height: 26px;
 }
 
 .search-filter-time {
@@ -100,6 +101,7 @@
 .search-result-row th:nth-child(1) {
     padding-left: 4px;
 }
+
 .search-result-row th:nth-child(1), .search-result-row td:nth-child(1) {
     display: block;
     text-align: left;
@@ -112,40 +114,38 @@
     width: 14%;
 }
 
-.search-result-row td:nth-child(2),
-.search-result-row td:nth-child(3),
-.search-result-row td:nth-child(4),
-.search-result-row td:nth-child(7){
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: center;
-        align-items: center;
+.search-result-row td:nth-child(2), .search-result-row td:nth-child(3), .search-result-row td:nth-child(4), .search-result-row td:nth-child(7) {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
 }
 
-
-.search-result-row td:nth-child(5){
+.search-result-row td:nth-child(5) {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
 }
-.search-result-price{
+
+.search-result-price {
     color: #ba4442;
     font-size: 20px;
 }
 
-.search-result-operation{
+.search-result-operation {
     color: #999999;
     font-size: 12px;
 }
 
-.search-result-row td:nth-child(6){
+.search-result-row td:nth-child(6) {
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
 }
-.search-result-row td:nth-child(6) span{
+
+.search-result-row td:nth-child(6) span {
     color: white;
     background-color: #5cb85c;
     border-radius: 2px;
@@ -153,17 +153,18 @@
     font-size: 12px;
 }
 
-.search-result-order{
+.search-result-order {
     background-color: white;
     border: rgb(211, 211, 211) solid 1px;
     width: 100%;
 }
 
-.search-result-position-expand{
+.search-result-position-expand {
     color: inherit;
     text-decoration: none;
     margin-top: 5px;
 }
+
 .search-result-position-expand::after {
     content: '»';
     transform: rotate(90deg);
@@ -171,7 +172,6 @@
     padding-left: 4px;
 }
 
-.ticket-process,
-.search-result{
+.ticket-process, .search-result {
     display: none;
 }
