@@ -22,8 +22,19 @@ require(['./Component.js'], () => {
         ['']
     );
     $().ready(() => {
-        // searchComponent.Load();
-        // confirmComponent.Load();
-        submitComponent.Load();
+        let begin = 1;
+        switch (begin) {
+            case 1:
+                searchComponent.Load();
+                break;
+            case 2:
+                searchComponent.Load();
+                break;
+            case 3:
+                confirmComponent.Load();
+                break;
+            default:
+                break;
+        }
     });
 });

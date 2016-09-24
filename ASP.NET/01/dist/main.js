@@ -6,8 +6,19 @@ require(['./Component.js'], function () {
     var submitComponent = new Component('/AirTicket/Submit.html', mainContainer, new HistoryState('submit'), ['']);
     var confirmComponent = new Component('./AirTicket/confirm.html', mainContainer, new HistoryState('confirm'), ['']);
     $().ready(function () {
-        // searchComponent.Load();
-        // confirmComponent.Load();
-        submitComponent.Load();
+        var begin = 1;
+        switch (begin) {
+            case 1:
+                searchComponent.Load();
+                break;
+            case 2:
+                searchComponent.Load();
+                break;
+            case 3:
+                confirmComponent.Load();
+                break;
+            default:
+                break;
+        }
     });
 });
