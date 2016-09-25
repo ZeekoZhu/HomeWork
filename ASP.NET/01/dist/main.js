@@ -12,7 +12,7 @@ require(['./Component.js'], function () {
                 searchComponent.Load();
                 break;
             case 2:
-                searchComponent.Load();
+                submitComponent.Load();
                 break;
             case 3:
                 confirmComponent.Load();

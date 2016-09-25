@@ -22,7 +22,7 @@ require(['./Component.js'], () => {
         ['']
     );
     $().ready(() => {
-        let begin = 1;
+        let begin = 2;
         switch (begin) {
             case 1:
                 searchComponent.Load();
