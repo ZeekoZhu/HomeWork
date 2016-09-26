@@ -1,7 +1,7 @@
 ﻿#include<iostream>
 #include<fstream>
 #include <string>
-#include "../FinalHomeWork/Collection.h"
+#include "Collection.h"
 
 using namespace std;
 

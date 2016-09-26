@@ -21,9 +21,15 @@
     <ClCompile Include="CollectionTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NumSys.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NumSys.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
