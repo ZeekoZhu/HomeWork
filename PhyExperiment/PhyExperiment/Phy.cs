@@ -18,6 +18,11 @@ namespace PhyExperiment
             return res;
         }
 
-        public static double ComputeB(double error) => erroe/Math.
+        public static double ComputeB(double error) => error / Math.Sqrt(3);
+
+        public static double ComputeD(List<double> datas,double error)
+        {
+            return Math.Sqrt(Math.Pow(ComputeA(datas), 2) + Math.Pow(ComputeB(error), 2));
+        }
     }
 }
