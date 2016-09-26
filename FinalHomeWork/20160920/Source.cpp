@@ -5,6 +5,12 @@
 
 using namespace std;
 
+/// <summary>
+/// 计算斐波那契数列
+/// </summary>
+/// <param name="k">The k.</param>
+/// <param name="m">The m.</param>
+/// <returns></returns>
 int FuckFibonacci(int k, int m)
 {
 	if (m < k - 1)
