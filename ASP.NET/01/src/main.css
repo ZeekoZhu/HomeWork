@@ -256,7 +256,6 @@ table {
 .airticket-btn {
     background-image: linear-gradient(0deg, #fd9802, #f7bb66);
     color: white;
-    height: 26px;
     border-radius: 2px;
     border: #d1861a solid 1px;
     cursor: pointer;
@@ -328,4 +327,78 @@ table {
 
 .footer-important{
     color:red;
+}
+
+.ticket-process-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-right: 12px;
+}
+
+.ticket-process-item {
+    font-size: 18px;
+    color: #bbbbbb;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-left: 8px;
+}
+
+.ticket-process-item::before {
+    content: ' ';
+    width: 35px;
+    height: 35px;
+    border: #bbbbbb solid 3px;
+    border-radius: 35px;
+    display: inline-block;
+    margin-right: 4px;
+}
+
+.ticket-process-item:nth-child(1)::after {
+    content: '1';
+    display: inline-block;
+    font-size: 18px;
+    position: relative;
+    left: -102px;
+}
+
+.ticket-process-item:nth-child(2)::after {
+    content: '2';
+    display: inline-block;
+    font-size: 18px;
+    position: relative;
+    left: -119px;
+}
+
+.ticket-process-item:nth-child(3)::after {
+    content: '3';
+    display: inline-block;
+    font-size: 18px;
+    position: relative;
+    left: -65px;
+}
+
+.ticket-process-active {
+    color: #ffa217;
+}
+
+.ticket-process-active::before {
+    border: #ffa217 solid 3px;
 }

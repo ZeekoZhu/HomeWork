@@ -1,3 +1,3 @@
 $('#search-query').one('click', () => {
-    $('.search-process,.search-result').css('display', 'block');
+    $('.ticket-process,.search-result').css('display', 'block');
 });
