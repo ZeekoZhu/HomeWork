@@ -1,2 +1,2 @@
-# CppHomeWrok
-cpp程序设计以及数据结构作业
+# HomeWrok
+杭州电子科技大学软件技术学院大二的作业
