@@ -13,7 +13,7 @@ using namespace std;
 /// <param name="k">The k.</param>
 /// <param name="m">The m.</param>
 /// <returns></returns>
-int FuckFibonacci(int k, int m)
+int ComputeFibonacci(int k, int m)
 {
 	if (m < k - 1)
 	{
@@ -48,7 +48,8 @@ public:
 	double Score;
 
 	Record()
-	{}
+	{
+	}
 	Record(string subject, bool gender, string school, double grade, double score)
 	{
 		Subject = subject;
@@ -72,10 +73,14 @@ public:
 		}
 	}
 
+	/// <summary>
+	/// 将对象写入到文件中。
+	/// </summary>
+	/// <param name="path">The path.</param>
 	void WriteToFile(string path)
 	{
 		string sperator = "||";
-		ofstream fout(path);
+		ofstream fout(path,ios::out|ios::app);
 		if (fout.is_open())
 		{
 			fout << Subject << sperator << Gender << sperator << School << sperator << Grade << sperator << Score << endl;
@@ -83,6 +88,11 @@ public:
 		}
 	}
 
+	/// <summary>
+	/// 从指定文件读取数据。
+	/// </summary>
+	/// <param name="path">The path.</param>
+	/// <returns></returns>
 	static List<Record>& ReadFile(string path)
 	{
 		List<Record>* records = new List<Record>();
@@ -98,20 +108,59 @@ public:
 		return *records;
 	}
 
-	
+
 };
+
+void InitData()
+{
+	(new Record("sport||1||A||94||5"))->WriteToFile("data.txt");
+	(new Record("sport||0||A||23||2"))->WriteToFile("data.txt");
+	(new Record("sport||1||A||34||3"))->WriteToFile("data.txt");
+	(new Record("sport||1||B||76||8"))->WriteToFile("data.txt");
+	(new Record("sport||0||B||85||9"))->WriteToFile("data.txt");
+	(new Record("sport||0||B||45||5"))->WriteToFile("data.txt");
+	(new Record("sport||1||C||87||9"))->WriteToFile("data.txt");
+	(new Record("sport||1||C||56||6"))->WriteToFile("data.txt");
+	(new Record("sport||0||C||53||5"))->WriteToFile("data.txt");
+	(new Record("sport||1||D||89||9"))->WriteToFile("data.txt");
+	(new Record("sport||0||D||34||3"))->WriteToFile("data.txt");
+	(new Record("sport||0||D||78||8"))->WriteToFile("data.txt");
+	(new Record("sport||1||E||90||9"))->WriteToFile("data.txt");
+	(new Record("sport||1||E||63||6"))->WriteToFile("data.txt");
+	(new Record("sport||0||E||78||8"))->WriteToFile("data.txt");
+	(new Record("sport||1||A||48||5"))->WriteToFile("data.txt");
+	(new Record("sport||0||B||62||6"))->WriteToFile("data.txt");
+	(new Record("sport||1||C||94||9"))->WriteToFile("data.txt");
+	(new Record("sport||1||D||82||8"))->WriteToFile("data.txt");
+	(new Record("sport||0||E||48||5"))->WriteToFile("data.txt");
+}
 
 
 int main()
 {
-	//cout << FuckFibonacci(6, 12);
-	List<Record> records = Record::ReadFile("test.txt");
-	records.ForEach([](Record& r)->void
+	InitData();
+	List<Record> records = Record::ReadFile("data.txt");
+	List<string> schools;
+	schools.Add("A").Add("B").Add("C").Add("D").Add("E")
+		.ForEach([&records](string& s)->void
 	{
-		cout << r.Subject << " " << r.Gender << " " << r.School << " " << r.Grade << " " << r.Score << endl;
+		double boy = records.Where([s](Record& r)->bool
+		{
+			return r.Gender && r.School.compare(s) == 0;
+		})
+			->Sum([](Record& r)->double
+		{
+			return r.Score;
+		});
+		double girl = records.Where([s](Record& r)->bool
+		{
+			return !r.Gender && r.School.compare(s) == 0;
+		})
+			->Sum([](Record& r)->double
+		{
+			return r.Score;
+		});
+		cout << s << "学校的女生总分：" << girl << endl;
+		cout << s << "学校的总体总分：" << boy + girl << endl;
 	});
-	/*Record* r = new Record("fuck||1||hdu||1||346");
-	r->WriteToFile("test.txt");*/
-	//Record::ReadFile("test.txt");
-	//records.Add();
 }

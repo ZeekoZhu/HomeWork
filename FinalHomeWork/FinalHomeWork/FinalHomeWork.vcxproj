@@ -139,6 +139,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Collection.h" />
+    <ClInclude Include="CollectionTest.h" />
     <ClInclude Include="NumSys.h" />
   </ItemGroup>
   <ItemGroup>
