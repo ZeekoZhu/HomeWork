@@ -266,6 +266,16 @@ public:
 		return result;
 	}
 
+	double Sum(std::function<double(T&)> propertySelector)
+	{
+		double result = 0.0;
+		this->ForEach([&result,&propertySelector](T& item)->void
+		{
+			result += propertySelector(item);
+		});
+		return result;
+	}
+
 	static int Total;
 };
 

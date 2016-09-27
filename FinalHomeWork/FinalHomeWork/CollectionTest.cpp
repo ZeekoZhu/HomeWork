@@ -1,17 +1,15 @@
 #include<iostream>
 #include "Collection.h"
+#include "CollectionTest.h"
 using namespace std;
 
-class CollectionTest
-{
-public:
-	static void Test()
+	void CollectionTest::Test()
 	{
 		cout << "Hello Fucking man!";
 		List<int> list;
 		list.Add(5).Add(23).Add(34);
 		cout << endl;
-		list.Map<int>([](int i)->int { return ++i; })
+		double res = list.Map<int>([](int i)->int { return ++i; })
 			->ForEach([](int& i)-> void
 		{
 			cout << i << " ";
@@ -25,13 +23,9 @@ public:
 			.InsertAt(233, 0)
 
 			.Add(12).Add(23).Add(44)
-			.Where([](int& i)-> bool
+			.Sum([](int& i)->double
 		{
-			return i % 2 != 0;
-		})
-			->ForEach([](int& i)-> void
-		{
-			cout << endl << i << " ";
+			return i;
 		});
+		cout << endl << res;
 	}
-};
