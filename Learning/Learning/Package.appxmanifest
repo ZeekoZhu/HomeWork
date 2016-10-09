@@ -7,14 +7,14 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="2867b966-2464-4ea3-acf9-a1c70625fe33"
+    Name="6adaf221-a625-44b8-ba3f-c46a6e2ec942"
     Publisher="CN=vaezt"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="2867b966-2464-4ea3-acf9-a1c70625fe33" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="6adaf221-a625-44b8-ba3f-c46a6e2ec942" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>Learning UWP</DisplayName>
+    <DisplayName>Learning</DisplayName>
     <PublisherDisplayName>vaezt</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -30,12 +30,12 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="Learning_UWP.App">
+      EntryPoint="Learning.App">
       <uap:VisualElements
-        DisplayName="Learning UWP"
+        DisplayName="Learning"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="Learning UWP"
+        Description="Learning"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />

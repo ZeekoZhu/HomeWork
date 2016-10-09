@@ -1,0 +1,58 @@
+﻿<UserControl
+    x:Class="Learning.Controls.ProductView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Learning.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <RelativePanel x:Name="layoutRoot" Background="Azure" MinWidth="100" MinHeight="100" Padding="6">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="common">
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <!--<AdaptiveTrigger MinWindowWidth="700"></AdaptiveTrigger>-->
+                        <local:MyTrigger></local:MyTrigger>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="rect1.(RelativePanel.Below)" Value=""></Setter>
+                        <Setter Target="rect1.(RelativePanel.AlignLeftWith)" Value=""></Setter>
+                        <Setter Target="rect1.(RelativePanel.AlignRightWith)" Value=""></Setter>
+                        <Setter Target="rect1.(RelativePanel.RightOf)" Value="rect"></Setter>
+                        <Setter Target="rect1.(RelativePanel.Margin)" Value="6,0,0,0"></Setter>
+                        <Setter Target="rect1.(RelativePanel.Height)" Value="94"></Setter>
+                        <Setter Target="rect1.(RelativePanel.Width)" Value="200"></Setter>
+                        <Setter Target="rect2.(RelativePanel.Margin)" Value="6,6,0,0"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+            <VisualStateGroup x:Name="selection">
+                <VisualState x:Name="selected">
+                    <VisualState.Setters>
+                        <Setter Target="layoutRoot.Background" Value="Purple"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="unselected">
+                    <VisualState.Setters>
+                        <Setter Target="layoutRoot.Background" Value="Azure"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Rectangle x:Name="rect" Fill="Lime" Width="130" Height="130"></Rectangle>
+        <Rectangle x:Name="rect1" Fill="Orange" RelativePanel.Below="rect"
+                   RelativePanel.AlignLeftWith="rect"
+                   RelativePanel.AlignRightWith="rect"
+                   Height="30"
+                   Margin="0,6,0,0"></Rectangle>
+        <Rectangle x:Name="rect2" Fill="SteelBlue" RelativePanel.Below="rect1"
+                   RelativePanel.AlignLeftWith="rect1"
+                   RelativePanel.AlignRightWith="rect1"
+                   Height="30"
+                   Margin="0,6,0,0"></Rectangle>
+        <CheckBox x:Name="checkBox" Margin="4,0,0,0" Checked="checkBox_Checked" Unchecked="checkBox_Unchecked"></CheckBox>
+    </RelativePanel>
+</UserControl>

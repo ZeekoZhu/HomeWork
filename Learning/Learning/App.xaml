@@ -1,8 +1,8 @@
 ﻿<Application
-    x:Class="Learning_UWP.App"
+    x:Class="Learning.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Learning_UWP"
+    xmlns:local="using:Learning"
     RequestedTheme="Light">
 
 </Application>
