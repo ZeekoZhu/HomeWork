@@ -127,5 +127,4 @@ int main()
 		cout << setw(5) << setfill('0') << sortedIndex[i] << " " << nodes[sortedIndex[i]].Data << " ";
 	}
 	cout << "-1";
-
 }

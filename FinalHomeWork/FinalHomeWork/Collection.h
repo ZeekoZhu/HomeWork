@@ -155,6 +155,11 @@ public:
 		return this->GetNodeAt(n).data;
 	}
 
+   /* const T& operator[] (std::size_t n)
+    {
+        return this->GetNodeAt(n).data;
+    }*/
+
 	List<T>& RemoveAt(size_t index)
 	{
 		Node<T>& that = this->GetNodeAt(index);

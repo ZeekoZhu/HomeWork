@@ -38,5 +38,8 @@
     <ClInclude Include="CollectionTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Number.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

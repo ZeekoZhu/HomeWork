@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.25807.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FinalHomeWork", "FinalHomeWork\FinalHomeWork.vcxproj", "{794CF48E-98A3-4941-897A-0C8C9DA1CAC9}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CppTask 01", "CppTask 01\CppTask 01.vcxproj", "{7CE9AC43-2F9D-4EF5-B6AA-65AE7608B9AA}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataStructure01", "DataStructure01\DataStructure01.vcxproj", "{EA7FC03E-DE13-42E7-837B-B4477252AB59}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CppTask02", "CppTask02\CppTask02.vcxproj", "{523D27F1-0F36-4FD0-89B7-2647A74B7811}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,14 @@ Global
 		{EA7FC03E-DE13-42E7-837B-B4477252AB59}.Release|x64.Build.0 = Release|x64
 		{EA7FC03E-DE13-42E7-837B-B4477252AB59}.Release|x86.ActiveCfg = Release|Win32
 		{EA7FC03E-DE13-42E7-837B-B4477252AB59}.Release|x86.Build.0 = Release|Win32
+		{523D27F1-0F36-4FD0-89B7-2647A74B7811}.Debug|x64.ActiveCfg = Debug|x64
+		{523D27F1-0F36-4FD0-89B7-2647A74B7811}.Debug|x64.Build.0 = Debug|x64
+		{523D27F1-0F36-4FD0-89B7-2647A74B7811}.Debug|x86.ActiveCfg = Debug|Win32
+		{523D27F1-0F36-4FD0-89B7-2647A74B7811}.Debug|x86.Build.0 = Debug|Win32
+		{523D27F1-0F36-4FD0-89B7-2647A74B7811}.Release|x64.ActiveCfg = Release|x64
+		{523D27F1-0F36-4FD0-89B7-2647A74B7811}.Release|x64.Build.0 = Release|x64
+		{523D27F1-0F36-4FD0-89B7-2647A74B7811}.Release|x86.ActiveCfg = Release|Win32
+		{523D27F1-0F36-4FD0-89B7-2647A74B7811}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
