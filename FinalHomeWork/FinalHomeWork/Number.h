@@ -15,4 +15,5 @@ public:
     string ToString();
 
 	Number operator +(Number& other);
+    Number operator-(Number & other);
 };
