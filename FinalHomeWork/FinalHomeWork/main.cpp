@@ -17,7 +17,7 @@ int main()
 	string sb = "123123";
     Number a(sa);
     Number b(sb);
-    Number c = a + b;
+    Number c = a - b;
     cout << c.ToString();
 	return 0;
 }
