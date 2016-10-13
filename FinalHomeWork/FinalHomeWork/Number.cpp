@@ -19,6 +19,10 @@ Number::Number(string number)
     }
 }
 
+/// <summary>
+/// 将数字转换到字符串
+/// </summary>
+/// <returns></returns>
 string Number::ToString()
 {
     string result;
@@ -30,9 +34,15 @@ string Number::ToString()
     return result;
 }
 
+/// <summary>
+/// 加法
+/// </summary>
+/// <param name="other">The other.</param>
+/// <returns></returns>
 Number Number::operator+(Number& other)
 {
     Number result;
+    result.Data.Clear();
     int tmp = 0;
     int i = Data.Length - 1;
     int j = other.Data.Length - 1;
@@ -60,6 +70,11 @@ Number Number::operator+(Number& other)
     return result;
 }
 
+/// <summary>
+/// 减法
+/// </summary>
+/// <param name="other">The other.</param>
+/// <returns></returns>
 Number Number::operator-(Number& other)
 {
     Number result;
