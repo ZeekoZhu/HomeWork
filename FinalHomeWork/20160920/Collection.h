@@ -29,7 +29,7 @@ protected:
 	~Node()
 	{
 		_total--;
-		cout << endl << "delete a node : " << Node<T>::_total;
+		//cout << endl << "delete a node : " << Node<T>::_total;
 	}
 };
 
@@ -110,7 +110,7 @@ public:
 	List()
 	{
 		Total++;
-		cout << "Init a List!" << endl;
+		//cout << "Init a List!" << endl;
 		head = tail = nullptr;
 		Length = 0;
 	}
@@ -118,7 +118,7 @@ public:
 	~List()
 	{
 		Total--;
-		cout << "list count : " << Total;
+		//cout << "list count : " << Total;
 	}
 
 
