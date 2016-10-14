@@ -1,4 +1,4 @@
-﻿namespace WebAuth.Services
+﻿namespace WebAuth.Domain.Services
 {
     public class DITestService
     {

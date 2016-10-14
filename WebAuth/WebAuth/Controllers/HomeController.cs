@@ -1,23 +1,25 @@
-﻿using MySql.Data.MySqlClient;
-using System.Data.SqlClient;
-using System.Web.Mvc;
-using WebAuth.Services;
+﻿using System.Web.Mvc;
+using WebAuth.Domain.Abstract;
+using WebAuth.Domain.Services;
 
 namespace WebAuth.Controllers
 {
     public class HomeController : Controller
     {
-        public DITestService Test { get; set; }
+        private readonly IAccountService _accountService;
+        private DITestService Test { get; set; }
 
-        public HomeController(DITestService test)
+
+        public HomeController(DITestService test, IAccountService accountService)
         {
+            _accountService = accountService;
             Test = test;
         }
         // GET: Home
         public ActionResult Index()
         {
-            string model = Test.Content;
-            return View(model:model);
+            var model = _accountService.GetUsers();
+            return View(model: model);
         }
     }
 }

@@ -1,12 +1,11 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using MySql.Data.MySqlClient;
+using System.Configuration;
 using System.Data.Common;
 using System.Web.Mvc;
-using WebAuth.Services;
-using Dapper;
-using System.Data.SqlClient;
-using System.Configuration;
+using WebAuth.Domain.Abstract;
+using WebAuth.Domain.Services;
 
 namespace WebAuth
 {
@@ -21,9 +20,11 @@ namespace WebAuth
 
             builder.Register((c) =>
             {
-                DbConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings);
+                DbConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["MySqlConnection"].ToString());
                 return conn;
-            });
+            }).InstancePerRequest();
+
+            builder.RegisterType<AccountService>().As<IAccountService>().InstancePerRequest();
 
             IContainer container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

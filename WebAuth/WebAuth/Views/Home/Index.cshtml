@@ -1,8 +1,15 @@
-﻿@model System.String
+﻿@using WebAuth.Domain.Models
+@model List<WebAuth.Domain.Models.User>
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
-<p>@Model</p>
+@foreach (User user in Model)
+{
+    <p>@user.UserId</p>
+    <p>@user.UserName</p>
+    <p>@user.Password</p>
+}
+
 
