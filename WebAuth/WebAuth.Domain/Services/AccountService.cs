@@ -73,7 +73,17 @@ namespace WebAuth.Domain.Services
 
     internal delegate string PasswordEncryptor(string userName, string pwd);
 
+    /// <summary>
+    /// 用户登录结果
+    /// </summary>
     public class LoginResult
+    {
+        public string AuthToken { get; set; }
+        public string RefreshToken { get; set; }
+        public bool Success { get; set; }
+    }
+
+    public class RegisterResult
     {
         public string AuthToken { get; set; }
         public string RefreshToken { get; set; }

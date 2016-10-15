@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
+﻿using System.Web.Http;
 
 namespace WebAuth
 {
@@ -19,6 +16,8 @@ namespace WebAuth
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            DIConfig.RegisterWebApiDependencies();
         }
     }
 }
