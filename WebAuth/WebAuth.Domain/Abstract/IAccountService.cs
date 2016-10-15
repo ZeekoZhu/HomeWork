@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using WebAuth.Domain.Models;
+﻿using WebAuth.Domain.Services;
 
 namespace WebAuth.Domain.Abstract
 {
     public interface IAccountService
     {
-        List<User> GetUsers();
+        LoginResult Login(string userName, string password);
     }
 }

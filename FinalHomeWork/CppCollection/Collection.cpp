@@ -8,7 +8,6 @@ class Collection
 {
 public:
     Collection();
-    ~Collection();
 
     Collection& Add(int value);
 
@@ -39,13 +38,9 @@ Collection::Collection() :_length(0)
 {
 }
 
-Collection::~Collection()
-{
-}
-
 Collection& Collection::Add(int value)
 {
-    if (_length == 5)
+    if (_length == 100)
     {
         return *this;
     }
@@ -71,7 +66,7 @@ Collection& Collection::Add(int value)
         }
         else
         {
-            left = middle + 1 > 4 ? 4 : middle + 1;
+            left = middle + 1 > _length - 1 ? _length - 1 : middle + 1;
         }
     }
     if (_data[left] != value)
@@ -100,7 +95,7 @@ bool Collection::Find(int value, int& outIndex)
         }
         else
         {
-            left = middle + 1 > 4 ? 4 : middle + 1;
+            left = middle + 1 > _length - 1 ? _length - 1 : middle + 1;
         }
     }
     if (_data[left] == value)
@@ -154,18 +149,21 @@ string Collection::ToString()
     string tmp;
     char buffer[7];
     strstream strs;
+    strs << "{";
     for (size_t i = 0; i < _length; i++)
     {
-        strs.clear();
-        strs << _data[i] << "\0";
-        sprintf(buffer, "%d", _data[i]);
-        result += buffer;
+        //strs.clear();
+        strs << _data[i];
+        //sprintf(buffer, "%d", _data[i]);
+        //result += buffer;
         if (i != _length - 1)
         {
-            result += ",";
+            //result += ",";
+            strs << ",";
         }
     }
-    return result + "}";
+    strs << "}" << '\0';
+    return string(strs.str());
 }
 
 Collection& Collection::operator| (const Collection& other)
@@ -206,7 +204,7 @@ Collection& Collection::operator& (const Collection& other)
     Collection* result = new Collection();
     int i = 0;
     int j = 0;
-    while (i < _length&&j < other._length)
+    while (i < _length && j < other._length)
     {
         if (_data[i] < other._data[j])
         {
@@ -257,7 +255,7 @@ Collection& Collection::operator- (const Collection& other)
 
 int Collection::operator[](const int& index)
 {
-    if (index>=_length)
+    if (index >= _length)
     {
         throw length_error("Segament Fault");
     }
@@ -288,6 +286,6 @@ int main()
         << (c & co).ToString() << endl
         << (c - co).ToString();
 
-        
+
     return 0;
 }
