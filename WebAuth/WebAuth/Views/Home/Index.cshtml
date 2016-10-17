@@ -1,15 +1,11 @@
-﻿@using WebAuth.Domain.Models
-@model List<WebAuth.Domain.Models.User>
+﻿@model WebAuth.Domain.Services.LoginResult
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
-@foreach (User user in Model)
-{
-    <p>@user.UserId</p>
-    <p>@user.UserName</p>
-    <p>@user.Password</p>
-}
+<p>@Model.AuthToken</p>
+<p>@Model.RefreshToken</p>
+<p>@Model.Success</p>
 
 

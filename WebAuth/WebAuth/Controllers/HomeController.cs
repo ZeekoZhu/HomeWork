@@ -18,7 +18,7 @@ namespace WebAuth.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            var model = _accountService.GetUsers();
+            var model = _accountService.Login("zeeko", "fuck");
             return View(model: model);
         }
     }
