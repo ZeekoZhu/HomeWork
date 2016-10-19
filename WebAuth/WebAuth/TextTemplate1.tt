@@ -4,24 +4,174 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Reflection" #>
+<#@ assembly name="$(SolutionDir)\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll"#>
+<#@ import namespace="System.Web.Http"#>
 <#@ assembly name="$(TargetPath)" #>
 <#@ import namespace="WebAuth.ApiControllers" #>
-<#@ output extension=".js" #>
+<#@ assembly name="$(SolutionDir)\WebAuth.Domain\bin\Debug\WebAuth.Domain.dll"#>
+<#@ import namespace="WebAuth.Domain.Models"#>
+<#@ output extension=".ts" #>
+
+
+/// <reference path='./typings/index.d.ts' />
+
+
+/**
+ * Resource
+ */
+class Resource {
+    constructor(
+        protected isDebug: boolean = false,
+        protected prefix: string = ''
+    ) {
+    }
+}
 
 <#
-    var assembly = typeof(AccountController).Assembly;
-    var typeInfos = assembly.DefinedTypes.Where(t => t.Name.EndsWith("Controller"));
-    foreach (TypeInfo typeInfo in typeInfos)
-    {
-        string controller = typeInfo.Name.Substring(0, typeInfo.Name.Length - 10);
-        var methods = typeInfo.DeclaredMethods.Select(m => m.Name);
-        foreach (string method in methods)
+        var assembly = typeof(AccountController).Assembly;
+        var typeInfos =
+            assembly.DefinedTypes.Where(t => t.Name.EndsWith("Controller") && t.Namespace == "WebAuth.ApiControllers");
+        foreach (TypeInfo typeInfo in typeInfos)
         {
+            string controller = typeInfo.Name.Substring(0, typeInfo.Name.Length - 10);
+            var methods = typeInfo.DeclaredMethods;
+            foreach (MethodInfo method in methods)
+            {
+                var parameters = method.GetParameters();
+                var returnType = method.ReturnType;
 #>
-$.ajax({
-    url:"/<#= controller#>/<#= method #>"
-});
+interface <#=controller + method.Name #>RequestModel {
 <#
+                foreach (ParameterInfo parameter in parameters)
+                {
+                    string parameterName = parameter.Name;
+                }
+#>
+}
+<#
+            }
+#>
+class <#=typeInfo.Name.Substring(0, typeInfo.Name.Length - 10) #> extends Resource {
+    constructor(isDebug?: boolean, prefix?: string) {
+        super(isDebug, prefix);
+    }
+<#
+        foreach (var method in methods)
+            {
+                var attributes = method.CustomAttributes;
+                string httpMethod = "";
+                foreach (CustomAttributeData attribute in attributes)
+                {
+                    httpMethod = attribute.AttributeType.Name.StartsWith("Http")
+                        ? attribute.AttributeType.Name.Substring(4, attribute.AttributeType.Name.Length - 13)
+                        : httpMethod;
+                }
+
+
+#>
+    public <#=method.Name #>(
+        data?: <#=controller + method.Name #>RequestModel,
+        success?: (data: <#=controller + method.Name #>ResponseModel, textStatus: string, jqXHR: JQueryXHR) => any,
+        error?: (jqXHR: JQueryXHR, textStatus: string, errorThrown: string) => any,
+        complete?: (jqXHR: JQueryXHR, textStatus: string) => any
+    ) {
+        let _this = this;
+        $.ajax({
+            url: _this.prefix + 'api/<#=controller #>/<#=method.Name #>',
+            method: '<#=httpMethod.ToUpper() #>',
+            contentType: 'application/json',
+            data: data,
+            success: success,
+            error: error,
+            complete: complete
+        });
+    }
+<#
+            }
+#>
+}
+<#
+        }
+#>
+
+<# FuckType(typeof(User)); #>
+
+ 
+
+<#+
+
+
+    private string ConvertBaseType(Type type)
+    {
+        string result = "object";
+        if (type == typeof(bool))
+            {
+                result = "boolean";
+            }
+            else
+            {
+                result = "number";
+            }
+        return result;
+    }
+
+    private void FuckType(Type typeInfo)
+    {
+        Stack<Type> types = new Stack<Type>();
+        types.Push(typeInfo);
+
+        while (types.Count!=0)
+        {
+            var type = types.Pop();
+            
+#>
+interface <#=type.Name#> {
+<#+
+            var props = type.GetTypeInfo().GetProperties();
+            foreach (PropertyInfo prop in props)
+            {
+                if (prop.PropertyType==typeof(string))
+                {
+#>
+    <#=prop.Name#>: string;
+<#+
+                }
+                else if (prop.PropertyType.GetInterface(typeof(IEnumerable<>).Name)!=null)
+                {
+                    var elementType = prop.PropertyType.GetInterface(typeof(IEnumerable<>).Name).GenericTypeArguments[0];
+                    string element = elementType?.Name;
+                    if (elementType?.Namespace=="System")
+                    {
+                        element = ConvertBaseType(elementType);
+                    }
+#>
+    <#=prop.Name#>: <#=element??"fuck"#>;
+<#+
+                }
+                else if (prop.PropertyType.Name.StartsWith("Nullable"))
+                {
+#>
+    <#=prop.Name#>?: <#=ConvertBaseType(prop.PropertyType.GetGenericArguments()[0])#>;
+<#+ 
+                }
+                
+                else if (prop.PropertyType.IsPrimitive)
+                {
+#>
+    <#=prop.Name#>: <#=ConvertBaseType(prop.PropertyType)#>;
+<#+
+                }
+                else
+                {
+                    types.Push(prop.PropertyType);
+#>
+    <#=prop.Name#>: <#=prop.PropertyType.Name#>;
+<#+
+                }
+            }
+#>
+}
+<#+
         }
     }
 #>

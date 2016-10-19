@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebAuth</name>
+    </assembly>
+    <members>
+        <member name="T:WebAuth.ApiControllers.AccountController">
+            <summary>
+            用户账户控制器
+            </summary>
+        </member>
+        <member name="M:WebAuth.ApiControllers.AccountController.#ctor(WebAuth.Domain.Abstract.IAccountService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebAuth.ApiControllers.AccountController"/> class.
+            </summary>
+            <param name="accoutService">The accout service.</param>
+        </member>
+        <member name="M:WebAuth.ApiControllers.AccountController.Login(WebAuth.ApiControllers.LoginInfo)">
+            <summary>
+            登录
+            </summary>
+            <param name="loginInfo">登录信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAuth.Helpers.FrontEndHelper.ConvertBaseType(System.Type)">
+            <summary>
+            转换基本类型为 js 类型
+            </summary>
+            <param name="typeInfo">The type information.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

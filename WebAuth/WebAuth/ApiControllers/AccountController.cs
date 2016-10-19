@@ -1,44 +1,34 @@
-﻿using System.Collections.Generic;
-using System.Web.Http;
+﻿using System.Web.Http;
 using WebAuth.Domain.Abstract;
 
 namespace WebAuth.ApiControllers
 {
+    /// <summary>
+    /// 用户账户控制器
+    /// </summary>
     public class AccountController : ApiController
     {
         private readonly IAccountService _accoutService;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AccountController"/> class.
+        /// </summary>
+        /// <param name="accoutService">The accout service.</param>
         public AccountController(IAccountService accoutService)
         {
             _accoutService = accoutService;
         }
-        // GET api/<controller>
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
 
-        // GET api/<controller>/5
-        public string Get(int id)
-        {
-            return "value";
-        }
 
-        // POST api/<controller>
+        /// <summary>
+        /// 登录
+        /// </summary>
+        /// <param name="loginInfo">登录信息</param>
+        /// <returns></returns>
         [HttpPost]
-        public bool Post([FromBody]LoginInfo loginInfo)
+        public bool Login([FromBody]LoginInfo loginInfo)
         {
             return _accoutService.Login(loginInfo.username, loginInfo.password).Success;
-        }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
         }
     }
 
