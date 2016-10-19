@@ -94,17 +94,19 @@ class <#=typeInfo.Name.Substring(0, typeInfo.Name.Length - 10) #> extends Resour
         }
 #>
 
-<# FuckType(typeof(User)); #>
+<# TypeRender.FuckType(typeof(User)); #>
 
  
 
 <#+
 
-
-    private string ConvertBaseType(Type type)
+    class TypeRender
     {
-        string result = "object";
-        if (type == typeof(bool))
+
+        private static string ConvertBaseType(Type type)
+        {
+            string result = "any";
+            if (type == typeof(bool))
             {
                 result = "boolean";
             }
@@ -112,66 +114,81 @@ class <#=typeInfo.Name.Substring(0, typeInfo.Name.Length - 10) #> extends Resour
             {
                 result = "number";
             }
-        return result;
-    }
+            return result;
+        }
 
-    private void FuckType(Type typeInfo)
-    {
-        Stack<Type> types = new Stack<Type>();
-        types.Push(typeInfo);
-
-        while (types.Count!=0)
+        public static void FuckType(Type typeInfo)
         {
-            var type = types.Pop();
-            
-#>
-interface <#=type.Name#> {
-<#+
-            var props = type.GetTypeInfo().GetProperties();
-            foreach (PropertyInfo prop in props)
+            Stack<Type> types = new Stack<Type>();
+            List<Type> created = new List<Type>();
+            types.Push(typeInfo);
+
+            while (types.Count != 0)
             {
-                if (prop.PropertyType==typeof(string))
-                {
+                var type = types.Pop();
+
 #>
-    <#=prop.Name#>: string;
+interface <#=type.Name #> {
 <#+
-                }
-                else if (prop.PropertyType.GetInterface(typeof(IEnumerable<>).Name)!=null)
+                var props = type.GetTypeInfo().GetProperties();
+                foreach (PropertyInfo prop in props)
                 {
-                    var elementType = prop.PropertyType.GetInterface(typeof(IEnumerable<>).Name).GenericTypeArguments[0];
-                    string element = elementType?.Name;
-                    if (elementType?.Namespace=="System")
+                    if (prop.PropertyType == typeof(string))
                     {
-                        element = ConvertBaseType(elementType);
+#>
+    <#=prop.Name #>: string;
+<#+
                     }
+                    else if (prop.PropertyType.GetInterface(typeof(IEnumerable<>).Name) != null)
+                    {
+                        var elementType =
+                            prop.PropertyType.GetInterface(typeof(IEnumerable<>).Name).GenericTypeArguments[0];
+                        string squareBrackets = "[]";
+                        while (elementType.GetInterface(typeof(IEnumerable<>).Name) != null &&
+                               elementType != typeof(string))
+                        {
+                            elementType = elementType.GetInterface(typeof(IEnumerable<>).Name).GenericTypeArguments[0];
+                            squareBrackets += "[]";
+                        }
+                        string element = elementType?.Name;
+                        if (elementType.IsPrimitive)
+                        {
+                            element = ConvertBaseType(elementType);
+                        }
+                        else if (elementType == typeof(string))
+                        {
+                            element = "string";
+                        }
 #>
-    <#=prop.Name#>: <#=element??"fuck"#>;
+    <#=prop.Name #>: <#=element + squareBrackets #>;
 <#+
-                }
-                else if (prop.PropertyType.Name.StartsWith("Nullable"))
-                {
+                    }
+                    else if (prop.PropertyType.Name.StartsWith("Nullable"))
+                    {
 #>
-    <#=prop.Name#>?: <#=ConvertBaseType(prop.PropertyType.GetGenericArguments()[0])#>;
-<#+ 
-                }
-                
-                else if (prop.PropertyType.IsPrimitive)
-                {
-#>
-    <#=prop.Name#>: <#=ConvertBaseType(prop.PropertyType)#>;
+    <#=prop.Name #>?: <#=ConvertBaseType(prop.PropertyType.GetGenericArguments()[0]) #>;
 <#+
-                }
-                else
-                {
-                    types.Push(prop.PropertyType);
+                    }
+
+                    else if (prop.PropertyType.IsPrimitive)
+                    {
 #>
-    <#=prop.Name#>: <#=prop.PropertyType.Name#>;
+    <#=prop.Name #>: <#=ConvertBaseType(prop.PropertyType) #>;
 <#+
+                    }
+                    else
+                    {
+                        types.Push(prop.PropertyType);
+#>
+    <#=prop.Name #>: <#=prop.PropertyType.Name #>;
+<#+
+                    }
                 }
-            }
 #>
 }
 <#+
+            }
         }
+
     }
 #>
