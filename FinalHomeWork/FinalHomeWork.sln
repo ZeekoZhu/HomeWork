@@ -17,6 +17,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CppCollection", "CppCollect
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DS03", "DS03\DS03.vcxproj", "{4FF9EF51-2627-4221-AFD1-597533FFB203}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CppCollection-LL", "CppCollection-LL\CppCollection-LL.vcxproj", "{07D5D382-C21F-4556-A9A1-E9D0263AD82E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -81,6 +83,14 @@ Global
 		{4FF9EF51-2627-4221-AFD1-597533FFB203}.Release|x64.Build.0 = Release|x64
 		{4FF9EF51-2627-4221-AFD1-597533FFB203}.Release|x86.ActiveCfg = Release|Win32
 		{4FF9EF51-2627-4221-AFD1-597533FFB203}.Release|x86.Build.0 = Release|Win32
+		{07D5D382-C21F-4556-A9A1-E9D0263AD82E}.Debug|x64.ActiveCfg = Debug|x64
+		{07D5D382-C21F-4556-A9A1-E9D0263AD82E}.Debug|x64.Build.0 = Debug|x64
+		{07D5D382-C21F-4556-A9A1-E9D0263AD82E}.Debug|x86.ActiveCfg = Debug|Win32
+		{07D5D382-C21F-4556-A9A1-E9D0263AD82E}.Debug|x86.Build.0 = Debug|Win32
+		{07D5D382-C21F-4556-A9A1-E9D0263AD82E}.Release|x64.ActiveCfg = Release|x64
+		{07D5D382-C21F-4556-A9A1-E9D0263AD82E}.Release|x64.Build.0 = Release|x64
+		{07D5D382-C21F-4556-A9A1-E9D0263AD82E}.Release|x86.ActiveCfg = Release|Win32
+		{07D5D382-C21F-4556-A9A1-E9D0263AD82E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
