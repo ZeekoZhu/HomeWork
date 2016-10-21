@@ -56,7 +56,7 @@ class <#=typeInfo.Name.Substring(0, typeInfo.Name.Length - 10) #> extends Resour
         super(isDebug, prefix);
     }
 <#
-        foreach (var method in methods)
+            foreach (var method in methods)
             {
                 var attributes = method.CustomAttributes;
                 string httpMethod = "";
@@ -66,6 +66,7 @@ class <#=typeInfo.Name.Substring(0, typeInfo.Name.Length - 10) #> extends Resour
                         ? attribute.AttributeType.Name.Substring(4, attribute.AttributeType.Name.Length - 13)
                         : httpMethod;
                 }
+                var requestParam = method.GetParameters();
 
 
 #>
@@ -87,6 +88,7 @@ class <#=typeInfo.Name.Substring(0, typeInfo.Name.Length - 10) #> extends Resour
         });
     }
 <#
+
             }
 #>
 }
@@ -94,101 +96,123 @@ class <#=typeInfo.Name.Substring(0, typeInfo.Name.Length - 10) #> extends Resour
         }
 #>
 
-<# TypeRender.FuckType(typeof(User)); #>
-
- 
+<# TypeGenerator(typeof(User)); #>
 
 <#+
 
-    class TypeRender
+    void TypeGenerator(Type type)
     {
-
-        private static string ConvertBaseType(Type type)
+        FuckType(type); 
+        created.ForEach(FuckType);
+    }
+    readonly List<Type> created = new List<Type>();
+    
+    void FuckType(Type typeInfo)
+    {
+        Stack<Type> types = new Stack<Type>();
+        
+        if (!created.Contains(typeInfo))
         {
-            string result = "any";
-            if (type == typeof(bool))
-            {
-                result = "boolean";
-            }
-            else
-            {
-                result = "number";
-            }
-            return result;
-        }
-
-        public static void FuckType(Type typeInfo)
-        {
-            Stack<Type> types = new Stack<Type>();
-            List<Type> created = new List<Type>();
             types.Push(typeInfo);
-
-            while (types.Count != 0)
-            {
-                var type = types.Pop();
-
+            created.Add(typeInfo);
+        }
+        while (types.Count != 0)
+        {
+            var type = types.Pop();
+            
 #>
 interface <#=type.Name #> {
 <#+
-                var props = type.GetTypeInfo().GetProperties();
-                foreach (PropertyInfo prop in props)
+            var props = type.GetTypeInfo().GetProperties();
+            // 遍历属性
+            foreach (PropertyInfo prop in props)
+            {
+                // string 类型
+                if (prop.PropertyType == typeof(string))
                 {
-                    if (prop.PropertyType == typeof(string))
-                    {
 #>
     <#=prop.Name #>: string;
 <#+
-                    }
-                    else if (prop.PropertyType.GetInterface(typeof(IEnumerable<>).Name) != null)
+                }
+                // 可枚举的类型
+                else if (prop.PropertyType.GetInterface(typeof(IEnumerable<>).Name) != null)
+                {
+                    // 获取元素类型
+                    var elementType =
+                        prop.PropertyType.GetInterface(typeof(IEnumerable<>).Name).GenericTypeArguments[0];
+                    string squareBrackets = "[]";
+                    while (elementType.GetInterface(typeof(IEnumerable<>).Name) != null &&
+                           elementType != typeof(string))
                     {
-                        var elementType =
-                            prop.PropertyType.GetInterface(typeof(IEnumerable<>).Name).GenericTypeArguments[0];
-                        string squareBrackets = "[]";
-                        while (elementType.GetInterface(typeof(IEnumerable<>).Name) != null &&
-                               elementType != typeof(string))
-                        {
-                            elementType = elementType.GetInterface(typeof(IEnumerable<>).Name).GenericTypeArguments[0];
-                            squareBrackets += "[]";
-                        }
-                        string element = elementType?.Name;
-                        if (elementType.IsPrimitive)
-                        {
-                            element = ConvertBaseType(elementType);
-                        }
-                        else if (elementType == typeof(string))
-                        {
-                            element = "string";
-                        }
-#>
-    <#=prop.Name #>: <#=element + squareBrackets #>;
-<#+
+                        elementType = elementType.GetInterface(typeof(IEnumerable<>).Name).GenericTypeArguments[0];
+                        squareBrackets += "[]";
                     }
-                    else if (prop.PropertyType.Name.StartsWith("Nullable"))
+                    string element = elementType?.Name;
+                    
+                    if (elementType.IsPrimitive)
                     {
-#>
-    <#=prop.Name #>?: <#=ConvertBaseType(prop.PropertyType.GetGenericArguments()[0]) #>;
-<#+
+                        element = ConvertBaseType(elementType);
                     }
-
-                    else if (prop.PropertyType.IsPrimitive)
+                    else if (elementType == typeof(string))
                     {
-#>
-    <#=prop.Name #>: <#=ConvertBaseType(prop.PropertyType) #>;
-<#+
+                        element = "string";	
                     }
                     else
                     {
+                        if (!created.Contains(elementType))
+                        {
+                            types.Push(elementType);
+                            created.Add(elementType);
+                    }
+                    }
+#>
+    <#=prop.Name #>: <#=element + squareBrackets #>;
+<#+
+                }
+                // 可空的类型
+                else if (prop.PropertyType.Name.StartsWith("Nullable"))
+                {
+#>
+    <#=prop.Name #>?: <#=ConvertBaseType(prop.PropertyType.GetGenericArguments()[0]) #>;
+<#+
+                }
+                // 基础类型：number bool
+                else if (prop.PropertyType.IsPrimitive)
+                {
+#>
+    <#=prop.Name #>: <#=ConvertBaseType(prop.PropertyType) #>;
+<#+
+                }
+                // 自定义类型
+                else
+                {
+                    if (!created.Contains(prop.PropertyType))
+                    {
                         types.Push(prop.PropertyType);
+                        created.Add(prop.PropertyType);
+                    }
 #>
     <#=prop.Name #>: <#=prop.PropertyType.Name #>;
 <#+
-                    }
                 }
+            }
 #>
 }
 <#+
-            }
         }
+    }
 
+    string ConvertBaseType(Type type)
+    {
+        string result = "any";
+        if (type == typeof(bool))
+        {
+            result = "boolean";
+        }
+        else
+        {
+            result = "number";
+        }
+        return result;
     }
 #>

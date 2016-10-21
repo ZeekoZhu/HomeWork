@@ -14,5 +14,6 @@ namespace WebAuth.Domain.Models
         //public FuckClass Fuck { get; set; }
 
         public List<FuckClass> Fucked { get; set; }
+        public FuckClass Unfacked { get; set; }
     }
 }
