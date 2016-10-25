@@ -147,13 +147,11 @@ interface User {
     AuthExpire?: number;
     RefreshToken: string;
     RefreshExpire?: number;
-    Fuck: FuckClass;
-    Fucked: number;
+    Fucked: FuckClass[];
+    Unfacked: FuckClass;
 }
 interface FuckClass {
     UserId: number;
     UserName: string;
 }
-
- 
 
