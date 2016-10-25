@@ -31,5 +31,8 @@ int main()
 
     auto f1 = Student::ReadFile("1.txt");
     auto f2 = Student::ReadFile("2.txt");
+    List<Student> f3 = f1;
+    f3.AddRange(f2);
+    Student::WriteFile("3.txt", f3);
     return 0;
 }

@@ -13,6 +13,7 @@ public:
     int English;
 
     static List<Student>& ReadFile(string path);
+    static List<Student>& WriteFile(string path,List<Student>& stus);
     Student();
     ~Student();
 };

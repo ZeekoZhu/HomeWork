@@ -115,6 +115,13 @@ public:
         Length = 0;
     }
 
+    List<T>(List<T>& other)
+    {
+        head = tail = nullptr;
+        Length = 0;
+        this->AddRange(other);
+    }
+
     ~List()
     {
         Total--;
@@ -142,6 +149,29 @@ public:
             tail = next;
         }
         Length++;
+        return *this;
+    }
+
+    List<T>& AddRange(List<T>& other)
+    {
+        other.ForEach([this](T value)->void
+        {
+            this->Add(value);
+        });
+        return *this;
+    }
+
+    
+
+    List<T>& operator=(List<T>& other)
+    {
+        while (this->head!=nullptr)
+        {
+            Node<T>* that = head;
+            head = head->_next;
+            RemoveNode(*that);
+        }
+        this->AddRange(other);
         return *this;
     }
 
