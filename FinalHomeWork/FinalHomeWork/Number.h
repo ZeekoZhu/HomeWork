@@ -16,4 +16,5 @@ public:
 
     Number operator +(Number& other);
     Number operator-(Number & other);
+    bool operator>(Number & other);
 };
