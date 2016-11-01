@@ -8,7 +8,6 @@ using namespace std;
 
 Number::Number()
 {
-    Data.Add(0);
 }
 
 Number::Number(string number)
@@ -26,11 +25,23 @@ Number::Number(string number)
 string Number::ToString()
 {
     string result;
-    Data.ForEach([&result](int n)->void
+    bool valid = Data.Length == 1;
+    for (int i = 0; i < Data.Length; i++)
     {
-        char c = n + '0';
-        result.append(1, c);
-    });
+        if (Data[i] < 0)
+        {
+            result.append(1, '-');
+        }
+        else
+        {
+            char c = Data[i] + '0';
+            if (c != '0' || valid)
+            {
+                valid = true;
+                result.append(1, c);
+            }
+        }
+    }
     return result;
 }
 
@@ -79,15 +90,17 @@ Number Number::operator-(Number& other)
 {
     Number result;
     bool isZero = true;
-    bool isNagetive = false;
-    int i = Data.Length - 1;
-    int j = other.Data.Length - 1;
+    bool isNagetive = other > *this;
+    Number na = isNagetive ? other : *this;
+    Number nb = isNagetive ? *this : other;
+    int i = na.Data.Length - 1;
+    int j = nb.Data.Length - 1;
     while (i >= 0 && j >= 0)
     {
-        int a = Data[i];
-        int b = other.Data[j];
+        int a = na.Data[i];
+        int b = nb.Data[j];
         int tmp = a - b;
-        if (tmp!=0)
+        if (tmp != 0)
         {
             isZero = false;
         }
@@ -99,15 +112,51 @@ Number Number::operator-(Number& other)
             }
             else
             {
-                Data[i - 1]--;
+                na.Data[i - 1]--;
                 tmp += 10;
             }
         }
         result.Data.InsertAt(tmp, 0);
+        i--; j--;
+    }
+    while (i >= 0)
+    {
+        isZero = false;
+        result.Data.InsertAt(na.Data[i], 0);
+        i--;
+    }
+    while (j >= 0)
+    {
+        isZero = false;
+        result.Data.InsertAt(nb.Data[j], 0);
+        j--;
     }
     if (isZero)
     {
         result.Data.Clear().Add(0);
     }
+    if (isNagetive && !isZero)
+    {
+        result.Data.InsertAt(-1, 0);
+    }
     return result;
+}
+
+
+bool Number::operator>(Number& other)
+{
+    if (Data.Length == other.Data.Length)
+    {
+        for (int i = 0; i < Data.Length; i++)
+        {
+            if (Data[i] != other.Data[i])
+            {
+                return Data[i] > other.Data[i];
+            }
+        }
+    }
+    else
+    {
+        return Data.Length > other.Data.Length;
+    }
 }
