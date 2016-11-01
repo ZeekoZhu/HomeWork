@@ -5,7 +5,8 @@
 class CollectionTest
 {
 public:
-	static void Test();
+    static void Test();
+    void ListSortTest();
 };
 
 #endif // !CollectionTest_H

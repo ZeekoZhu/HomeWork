@@ -29,3 +29,8 @@ using namespace std;
 		});
 		cout << endl << res;
 	}
+
+    void CollectionTest::ListSortTest()
+    {
+
+    }

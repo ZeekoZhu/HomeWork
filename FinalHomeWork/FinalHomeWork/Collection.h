@@ -161,11 +161,11 @@ public:
         return *this;
     }
 
-    
+
 
     List<T>& operator=(List<T>& other)
     {
-        while (this->head!=nullptr)
+        while (this->head != nullptr)
         {
             Node<T>* that = head;
             head = head->_next;
@@ -313,6 +313,49 @@ public:
             result += propertySelector(item);
         });
         return result;
+    }
+
+    List<T>& Sort(std::function<bool(T&, T&)> comparer)
+    {
+        List<T>* result = new List<T>();
+        result = *this;
+        Node<T>* begin = result->head;
+        Node<T>* end = result->tail;
+        QSort(begin, end, comparer);
+
+    }
+
+    void QSort(Node<T>* begin, Node<T>* end, std::function<bool(T&, T&)> comparer)
+    {
+        if (begin == end || begin == nullptr || end == nullptr)
+        {
+            return;
+        }
+        Node<T>* initBegin = begin;
+        Node<T>* initEnd = end;
+        Node<T> base = *begin;
+        Node<T>* current = begin;
+
+        while (begin != end)
+        {
+            // 先找一个比 base 小的
+            while (comparer(end->data, base.data) && end != begin)
+            {
+                end = end->_before;
+            }
+            current->data = end->data;
+            current = end;
+            // 再找一个比 base 大的
+            while (!comparer(begin->data, base.data) && begin != end)
+            {
+                begin = begin->_next;
+            }
+            current->data = begin->data;
+            current = begin;
+        }
+        current->data = base.data;
+        QSort(initBegin, current);
+        QSort(current, initEnd);
     }
 
     static int Total;
