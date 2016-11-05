@@ -324,7 +324,7 @@ public:
         QSort(begin, end, comparer);
         return *result;
     }
-
+private:
     void QSort(Node<T>* begin, Node<T>* end, std::function<bool(T&, T&)> comparer)
     {
         if (begin == end || begin == nullptr || end == nullptr)
@@ -356,8 +356,8 @@ public:
         current->data = base.data;
         auto nextEnd = current == initBegin ? current : current->_before;
         auto nextBegin = current == initEnd ? current : current->_next;
-        QSort(initBegin, nextEnd,comparer);
-        QSort(nextBegin, initEnd,comparer);
+        QSort(initBegin, nextEnd, comparer);
+        QSort(nextBegin, initEnd, comparer);
     }
 
     static int Total;
