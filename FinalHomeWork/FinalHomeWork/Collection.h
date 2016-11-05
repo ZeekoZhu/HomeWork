@@ -318,11 +318,11 @@ public:
     List<T>& Sort(std::function<bool(T&, T&)> comparer)
     {
         List<T>* result = new List<T>();
-        result = *this;
+        *result = *this;
         Node<T>* begin = result->head;
         Node<T>* end = result->tail;
         QSort(begin, end, comparer);
-
+        return *result;
     }
 
     void QSort(Node<T>* begin, Node<T>* end, std::function<bool(T&, T&)> comparer)
@@ -338,15 +338,15 @@ public:
 
         while (begin != end)
         {
-            // 先找一个比 base 小的
-            while (comparer(end->data, base.data) && end != begin)
+            // 先找一个比 base 大的
+            while (comparer(base.data, end->data) && end != begin && end != initBegin)
             {
                 end = end->_before;
             }
             current->data = end->data;
             current = end;
-            // 再找一个比 base 大的
-            while (!comparer(begin->data, base.data) && begin != end)
+            // 再找一个比 base 小的
+            while (!comparer(base.data, begin->data) && begin != end && begin != initEnd)
             {
                 begin = begin->_next;
             }
@@ -354,8 +354,10 @@ public:
             current = begin;
         }
         current->data = base.data;
-        QSort(initBegin, current);
-        QSort(current, initEnd);
+        auto nextEnd = current == initBegin ? current : current->_before;
+        auto nextBegin = current == initEnd ? current : current->_next;
+        QSort(initBegin, nextEnd,comparer);
+        QSort(nextBegin, initEnd,comparer);
     }
 
     static int Total;
