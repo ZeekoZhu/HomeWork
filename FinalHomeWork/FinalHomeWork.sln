@@ -25,6 +25,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CppTask05", "CppTask05\CppT
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DS05", "DS05\DS05.vcxproj", "{8C993769-4F8F-4896-B002-9F3C2704FD1B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CppTask06", "CppTask06\CppTask06.vcxproj", "{067FF286-9089-4E18-8ECF-FCFA2BBF7A70}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -145,6 +147,16 @@ Global
 		{8C993769-4F8F-4896-B002-9F3C2704FD1B}.Release|x64.Build.0 = Release|x64
 		{8C993769-4F8F-4896-B002-9F3C2704FD1B}.Release|x86.ActiveCfg = Release|Win32
 		{8C993769-4F8F-4896-B002-9F3C2704FD1B}.Release|x86.Build.0 = Release|Win32
+		{067FF286-9089-4E18-8ECF-FCFA2BBF7A70}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{067FF286-9089-4E18-8ECF-FCFA2BBF7A70}.Debug|x64.ActiveCfg = Debug|x64
+		{067FF286-9089-4E18-8ECF-FCFA2BBF7A70}.Debug|x64.Build.0 = Debug|x64
+		{067FF286-9089-4E18-8ECF-FCFA2BBF7A70}.Debug|x86.ActiveCfg = Debug|Win32
+		{067FF286-9089-4E18-8ECF-FCFA2BBF7A70}.Debug|x86.Build.0 = Debug|Win32
+		{067FF286-9089-4E18-8ECF-FCFA2BBF7A70}.Release|Any CPU.ActiveCfg = Release|Win32
+		{067FF286-9089-4E18-8ECF-FCFA2BBF7A70}.Release|x64.ActiveCfg = Release|x64
+		{067FF286-9089-4E18-8ECF-FCFA2BBF7A70}.Release|x64.Build.0 = Release|x64
+		{067FF286-9089-4E18-8ECF-FCFA2BBF7A70}.Release|x86.ActiveCfg = Release|Win32
+		{067FF286-9089-4E18-8ECF-FCFA2BBF7A70}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
