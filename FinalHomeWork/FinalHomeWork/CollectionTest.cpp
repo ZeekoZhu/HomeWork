@@ -33,11 +33,11 @@ using namespace std;
     void CollectionTest::ListSortTest()
     {
         List<int>nums;
-        nums.Add(6)
-            .Add(6)
-            .Add(6)
+        nums.Add(5)
+            .Add(1)
+            .Add(4)
             .Add(6);
-        List<int> sorted = nums.Sort([](int a, int b)->bool 
+        List<int> sorted = nums.PopSort([](int a, int b)->bool 
         {
             return a > b;
         });

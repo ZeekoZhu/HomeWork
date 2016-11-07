@@ -324,6 +324,33 @@ public:
         QSort(begin, end, comparer);
         return *result;
     }
+
+    List<T>& PopSort(std::function<bool(T&, T&)> comparer)
+    {
+        List<T>* result = new List<T>();
+        *result = *this;
+        Node<T>* that;
+        bool isChanged = false;
+        T tmp;
+        do
+        {
+            that = result->head;
+            isChanged = false;
+            while (that->_next != nullptr)
+            {
+                if (!comparer(that->data, that->_next->data))
+                {
+                    tmp = that->data;
+                    that->data = that->_next->data;
+                    that->_next->data = tmp;
+                    isChanged = true;
+                }
+                that = that->_next;
+            }
+        } while (isChanged);
+
+        return *result;
+    }
 private:
     void QSort(Node<T>* begin, Node<T>* end, std::function<bool(T&, T&)> comparer)
     {
