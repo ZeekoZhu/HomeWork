@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "Collection.h"
 #include <string>
 #include "NumSys.h"
@@ -41,7 +42,49 @@ int main()
     });
     Student::WriteFile("4.txt", *again);
     cout << "补考学生名单已经写入 4.txt" << endl;
+    // the second method to sort
+    /*List<Student> sorted = again->PopSort([](Student s, Student b)->bool
+    {
+        int ss = s.Math + s.English + s.Chinese;
+        int bs = b.Math + b.English + b.Chinese;
+        return ss > bs;
+    });*/
+    List<Student> sorted = f3.Sort([](Student s, Student b)->bool
+    {
+        int ss = s.Math + s.English + s.Chinese;
+        int bs = b.Math + b.English + b.Chinese;
+        return ss > bs;
+    });
 
-
+    cout << setw(8) << "Name" << setw(8) << "StudentId" << setw(8) << "Chinese" << setw(8) << "Math" << setw(8) << "English" << endl;
+    sorted.ForEach([](Student& s)->void
+    {
+        cout << setw(8) << s.Name << setw(8) << s.StudentId << setw(8) << s.Chinese << setw(8) << s.Math << setw(8) << s.English << endl;
+    });
+    string name;
+    while (1)
+    {
+        cout << "please enter the student's name:" << endl;
+        cin >> name;
+        auto res = sorted.Where([&name](Student& s)->bool
+        {
+            return s.Name.compare(name) == 0;
+        });
+        cout << setw(8) << "Name" << setw(8) << "StudentId" << setw(8) << "Chinese" << setw(8) << "Math" << setw(8) << "English" << endl;
+        res->ForEach([](Student& s)->void
+        {
+            cout << setw(8) << s.Name << setw(8) << s.StudentId << setw(8) << s.Chinese << setw(8) << s.Math << setw(8) << s.English << endl;
+        });
+        // the second method to search
+        /*sorted.ForEach([&name](Student& s)->void
+        {
+            if (s.Name.compare(name) == 0)
+            {
+                cout << setw(8) << s.Name << setw(8) << s.StudentId << setw(8) << s.Chinese << setw(8) << s.Math << setw(8) << s.English << endl;
+            }
+        });*/
+        
+    }
+    
     return 0;
 }
