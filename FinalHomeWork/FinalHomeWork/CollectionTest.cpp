@@ -50,5 +50,5 @@ using namespace std;
 
     void CollectionTest::HuffmanTest()
     {
-        Huffman h("fucker");
+        Huffman h("aaabbcd");
     }
