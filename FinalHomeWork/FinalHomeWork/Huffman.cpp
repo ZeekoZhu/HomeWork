@@ -28,6 +28,7 @@ public:
     string Content;
     HNode* Tree;
     HTable* CodeTable;
+    int tableLen = 0;
     Huffman(string str)
     {
         Content = str;
@@ -57,8 +58,8 @@ public:
         }
 
         // 所有字符个数
-        len = index + 1;    
-        
+        tableLen = len = index + 1;
+
         // construct new sub tree
         // select 2 min node;
         bool flag = true;
@@ -87,6 +88,49 @@ public:
         {
             cout << CodeTable[i].Value << "  " << CodeTable[i].Code << endl;
         }
+    }
+
+    string Encode()
+    {
+        string result("");
+        for (char c : Content)
+        {
+            for (int i = 0; i < tableLen; i++)
+            {
+                if (CodeTable[i].Value == c)
+                {
+                    result += CodeTable[i].Code;
+                }
+            }
+        }
+        return result;
+    }
+
+    string Decode(string codes)
+    {
+        string result("");
+        int len = codes.length();
+        if (len == 0)
+        {
+            return result;
+        }
+        int begin = 0;
+        string tmp;
+        while (begin != len)
+        {
+            tmp += codes[begin++];
+            for (int i = 0; i < tableLen; i++)
+            {
+                if (tmp.compare(CodeTable[i].Code) == 0)
+                {
+                    result += CodeTable[i].Value;
+                    //begin++;
+                    tmp = "";
+                    break;
+                }
+            }
+        }
+        return result;
     }
 
 
@@ -134,7 +178,7 @@ public:
             }
         }
     }
-    
+
     /// <summary>
     /// Gets the sub tree.
     /// </summary>

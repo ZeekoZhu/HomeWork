@@ -51,4 +51,6 @@ using namespace std;
     void CollectionTest::HuffmanTest()
     {
         Huffman h("aaabbcd");
+        h.Encode();
+        h.Decode("0001010110111");
     }
