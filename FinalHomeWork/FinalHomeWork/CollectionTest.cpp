@@ -1,6 +1,7 @@
 #include<iostream>
 #include "Collection.h"
 #include "CollectionTest.h"
+#include "Huffman.cpp"
 using namespace std;
 
     void CollectionTest::Test()
@@ -45,4 +46,9 @@ using namespace std;
         {
             cout << a << " ";
         });
+    }
+
+    void CollectionTest::HuffmanTest()
+    {
+        Huffman h("fucker");
     }

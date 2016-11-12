@@ -10,26 +10,8 @@
 
 using namespace std;
 
-
-int main()
+void four()
 {
-    //CollectionTest::Test();
-    /*cout << ConvertOctWithArray(2, "111") << endl;
-    cout << FromOctToWithArray(16, 56);*/
-
-    /*string sa = "123123";
-    string sb = "123123";
-    Number a(sa);
-    Number b(sb);
-    Number c = a + b;
-    cout << c.ToString();*/
-
-    /*ofstream fout("fuck.txt", ios::out | ios::app);
-    if (fout.is_open())
-    {
-        fout << 12 << " " << "hello" << " " << 12.244;
-        fout.close();
-    }*/
     auto f1 = Student::ReadFile("1.txt");
     auto f2 = Student::ReadFile("2.txt");
     List<Student> f3 = f1;
@@ -45,9 +27,9 @@ int main()
     // the second method to sort
     /*List<Student> sorted = again->PopSort([](Student s, Student b)->bool
     {
-        int ss = s.Math + s.English + s.Chinese;
-        int bs = b.Math + b.English + b.Chinese;
-        return ss > bs;
+    int ss = s.Math + s.English + s.Chinese;
+    int bs = b.Math + b.English + b.Chinese;
+    return ss > bs;
     });*/
     List<Student> sorted = f3.Sort([](Student s, Student b)->bool
     {
@@ -78,13 +60,37 @@ int main()
         // the second method to search
         /*sorted.ForEach([&name](Student& s)->void
         {
-            if (s.Name.compare(name) == 0)
-            {
-                cout << setw(8) << s.Name << setw(8) << s.StudentId << setw(8) << s.Chinese << setw(8) << s.Math << setw(8) << s.English << endl;
-            }
+        if (s.Name.compare(name) == 0)
+        {
+        cout << setw(8) << s.Name << setw(8) << s.StudentId << setw(8) << s.Chinese << setw(8) << s.Math << setw(8) << s.English << endl;
+        }
         });*/
-        
+
     }
+}
+
+int main()
+{
+    //CollectionTest::Test();
+    /*cout << ConvertOctWithArray(2, "111") << endl;
+    cout << FromOctToWithArray(16, 56);*/
+
+    /*string sa = "123123";
+    string sb = "123123";
+    Number a(sa);
+    Number b(sb);
+    Number c = a + b;
+    cout << c.ToString();*/
+
+    /*ofstream fout("fuck.txt", ios::out | ios::app);
+    if (fout.is_open())
+    {
+        fout << 12 << " " << "hello" << " " << 12.244;
+        fout.close();
+    }*/
+
+
+    CollectionTest::HuffmanTest();
     
     return 0;
 }
