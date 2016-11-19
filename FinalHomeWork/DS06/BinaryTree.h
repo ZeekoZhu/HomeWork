@@ -44,22 +44,15 @@ public:
 
                 if (isLeft)
                 {
-                    that = parent->rchild;
                     isLeft = false;
                 }
                 else
                 {
-                    do
-                    {
-                        trace.pop();
-                        if (trace.empty())
-                        {
-                            return;
-                        }
-                        parent = trace.top();
-                    } while (parent->rchild != nullptr);
-                    that = parent->rchild;
+                    trace.pop();
+                    parent = trace.top();
                 }
+                that = parent->rchild;
+
             }
             else
             {
@@ -70,6 +63,50 @@ public:
                 isLeft = true;
             }
         }
+    }
+
+    bool IsSimilarTo(BinaryTree& other)
+    {
+        BinaryNode* _this = this->root;
+        BinaryNode* that = other.root;
+        stack<BinaryNode*> thisTrace;
+        stack<BinaryNode*> thatTrace;
+        thisTrace.push(_this);
+        thatTrace.push(that);
+        _this = _this->lchild;
+        that = that->lchild;
+        bool isLeft = true;
+        while (!thisTrace.empty() && !thatTrace.empty())
+        {
+            if ((_this == nullptr && that != nullptr)
+                || (_this != nullptr && that == nullptr))
+            {
+                return false;
+            }
+            if (_this == nullptr)
+            {
+                if (isLeft)
+                {
+                    isLeft = false;
+                }
+                else
+                {
+                    thisTrace.pop();
+                    thatTrace.pop();
+                }
+                _this = thisTrace.top()->rchild;
+                that = thatTrace.top()->rchild;
+            }
+            else
+            {
+                thisTrace.push(_this);
+                thatTrace.push(that);
+                _this = _this->lchild;
+                that = that->lchild;
+                isLeft = true;
+            }
+        }
+        return true;
     }
 };
 
