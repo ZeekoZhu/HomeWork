@@ -4,147 +4,88 @@
 
 using namespace std;
 
-struct Block
+struct Point
 {
-    int X;
-    int Y;
-
-    Block() : X(0), Y(0)
+    Point(int d, int a, int b) : data(d), x(a), y(b)
     {}
-
-    Block(int x, int y) : X(x), Y(y)
-    {}
+    int data;
+    int x;
+    int y;
 };
 
-class Matrix
-{
-    vector<vector<int> > *datas;
-    vector<vector<bool> > *map;
-    int row;
-    int column;
-    int visited;
-public:
-    Matrix(int row, int column) :
-            datas(new vector<vector<int>>(row, vector<int>(column, 0))),
-            map(new vector<vector<bool>>(row, vector<bool>(column, false))),
-            row(row), column(column), visited(0)
-    {
-    }
+Point getUpPoint(const vector<vector<int> >& matrix, const Point& temp);
 
-    bool IsVisited(Block *block) const
-    {
-        return (*map)[block->X][block->Y];
-    }
+Point getBelowPoint(const vector<vector<int> >& matrix, const Point& temp);
 
-    void Visit(Block *block)
-    {
-        visited++;
-        (*map)[block->X][block->Y] = true;
-    }
+Point getLeftPoint(const vector<vector<int> >& matrix, const Point& temp);
 
-    bool IsVisitedOut() const
-    {
-        return visited >= row * column;
-    }
-
-    Block *GetDownWithIt() const
-    {
-        Block *block = nullptr;
-        for (int i = 0; i < row; ++i)
-        {
-            for (int j = 0; j < column; ++j)
-            {
-                if (!(*map)[i][j])
-                {
-                    block = new Block(i, j);
-                    return block;
-                }
-            }
-        }
-        return block;
-    }
-
-    int GetValue(Block *block) const
-    {
-        return (*datas)[block->X][block->Y];
-    }
-
-    void SetValue(int row, int column, int value) const
-    {
-        (*datas)[row][column] = value;
-    }
-
-    Block *GetBeLowBlock(Block *block) const
-    {
-        int x = block->X + 1;
-        int y = block->Y;
-        if (x > row - 1)
-        {
-            x = 0;
-            y++;
-        }
-        return new Block(x, y);
-    }
-
-    Block *GetRightBlock(Block *block) const
-    {
-        int x = block->X;
-        int y = block->Y + 1;
-        if (y > column - 1)
-        {
-            x++;
-            y = 0;
-        }
-        return new Block(x, y);
-    }
-};
-
+Point getRightPoint(const vector<vector<int> >& matrix, const Point& temp);
 
 int main()
 {
-    int row;
-    int column;
-    int tmp;
-    cin >> row >> column;
+    int i, j;
+    cin >> i >> j;
 
-    Matrix matrix(row, column);
-    for (int i = 0; i < row; i++)
+    vector<vector<int> > matrix;
+    stack<Point> s;
+    for (int a = 0; a < i; a++)
     {
-        for (int j = 0; j < column; ++j)
+        vector<int> temp;
+        int c = 0;
+        for (int b = 0; b < j; b++)
         {
-            cin >> tmp;
-            matrix.SetValue(i, j, tmp);
+            cin >> c;
+            temp.push_back(c);
         }
+        matrix.push_back(temp);
     }
-    cout << "input end" << endl;
 
-    stack<Block *> trace;
-    Block *block;
-    while (!matrix.IsVisitedOut())
+    int count = 0;
+    for (int a = 0; a < i; a++)
     {
-        block = matrix.GetDownWithIt();
-        trace.push(block);
-        matrix.Visit(block);
-        int value = matrix.GetValue(block);
-        while (!trace.empty())
+        for (int b = 0; b < j; b++)
         {
-            if (!matrix.IsVisited(block) && value == matrix.GetValue(block))
+            if (matrix[a][b] > 0)
             {
-                matrix.Visit(block);
-                block = matrix.GetBeLowBlock(block);
-            }
-            else
-            {
-                if (trace.empty())
+                s.push(Point(matrix[a][b], a, b));
+                while (!s.empty())
                 {
-                    break;
+                    Point temp = s.top();
+                    s.pop();
+                    if (temp.x - 1 >= 0 && matrix[temp.x - 1][temp.y] == temp.data)
+                    {
+                        s.push(getUpPoint(matrix, temp));
+                    }
+                    if (temp.x + 1 < i && matrix[temp.x + 1][temp.y] == temp.data)
+                    {
+                        s.push(getBelowPoint(matrix, temp));
+                    }
+                    if (temp.y - 1 >= 0 && matrix[temp.x][temp.y - 1] == temp.data)
+                    {
+                        s.push(getLeftPoint(matrix, temp));
+                    }
+                    if (temp.y + 1 < j && matrix[temp.x][temp.y + 1] == temp.data)
+                    {
+                        s.push(getRightPoint(matrix, temp));
+                    }
+                    matrix[temp.x][temp.y] = -1;
                 }
-                block = matrix.GetRightBlock(trace.top());
-                trace.pop();
+                count++;
             }
-            trace.push(block);
         }
-        cout << value << endl;
     }
+    cout << count;
     return 0;
 }
+
+Point getRightPoint(const vector<vector<int> >& matrix, const Point& temp)
+{ return Point(matrix[temp.x][temp.y + 1], temp.x, temp.y + 1); }
+
+Point getLeftPoint(const vector<vector<int> >& matrix, const Point& temp)
+{ return Point(matrix[temp.x][temp.y - 1], temp.x, temp.y - 1); }
+
+Point getBelowPoint(const vector<vector<int> >& matrix, const Point& temp)
+{ return Point(matrix[temp.x + 1][temp.y], temp.x + 1, temp.y); }
+
+Point getUpPoint(const vector<vector<int> >& matrix, const Point& temp)
+{ return Point(matrix[temp.x - 1][temp.y], temp.x - 1, temp.y); }
