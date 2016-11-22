@@ -1,6 +1,10 @@
 #pragma once
 #include <iostream>
 #include <functional>
+#include <stdexcept>
+#include <cmath>
+
+using namespace std;
 
 #ifndef MYLIST_H
 #define MYLIST_H
@@ -8,7 +12,7 @@ template <typename T> class List;
 template <typename T> class Stack;
 
 /// <summary>
-/// ÏßÐÔ½á¹¹½ÚµãÀà
+/// ï¿½ï¿½ï¿½Ô½á¹¹ï¿½Úµï¿½ï¿½ï¿½
 /// </summary>
 template <typename T>
 class Node
@@ -35,7 +39,7 @@ protected:
 
 
 /// <summary>
-/// È«²¿µÄÎ´Ïú»ÙµÄ½Úµã¸öÊý
+/// È«ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ÙµÄ½Úµï¿½ï¿½ï¿½ï¿½
 /// </summary>
 template <typename T>
 int Node<T>::_total = 0;
@@ -44,7 +48,7 @@ int Node<T>::_total = 0;
 
 
 /// <summary>
-/// Á´±í
+/// ï¿½ï¿½ï¿½ï¿½
 /// </summary>
 template <typename T>
 class List
@@ -54,7 +58,7 @@ protected:
     Node<T>* tail;
 
     /// <summary>
-    /// »ñÈ¡Êý¾Ý½Úµã.
+    /// ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ý½Úµï¿½.
     /// </summary>
     /// <param name="index">The index.</param>
     /// <returns></returns>
@@ -100,7 +104,7 @@ protected:
 public:
 
     /// <summary>
-    /// »ñÈ¡ÔªËØ¸öÊý
+    /// ï¿½ï¿½È¡Ôªï¿½Ø¸ï¿½ï¿½ï¿½
     /// </summary>
     int Length;
 
@@ -130,7 +134,7 @@ public:
 
 
     /// <summary>
-    /// ÏòÄ©Î²Ìí¼ÓÒ»¸öÔªËØ¡£
+    /// ï¿½ï¿½Ä©Î²ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ôªï¿½Ø¡ï¿½
     /// </summary>
     /// <param name="value">The value.</param>
     /// <returns></returns>
@@ -176,7 +180,7 @@ public:
     }
 
     /// <summary>
-    /// ÏÂ±ê·ÃÎÊ
+    /// ï¿½Â±ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     /// <param name="n">The n.</param>
     /// <returns></returns>
@@ -254,7 +258,7 @@ public:
     }
 
     /// <summary>
-    /// ¶Ô¼¯ºÏÖÐËùÓÐÔªËØÖ´ÐÐ²Ù×÷
+    /// ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½Ö´ï¿½Ð²ï¿½ï¿½ï¿½
     /// </summary>
     /// <param name="action">The action.</param>
     /// <returns></returns>
@@ -271,7 +275,7 @@ public:
 
 
     /// <summary>
-    /// ²Î¼û https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+    /// ï¿½Î¼ï¿½ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
     /// </summary>
     /// <param name="action">The action.</param>
     /// <returns></returns>
@@ -365,14 +369,14 @@ private:
 
         while (begin != end)
         {
-            // ÏÈÕÒÒ»¸ö±È base ´óµÄ
+            // ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ base ï¿½ï¿½ï¿½
             while (comparer(base.data, end->data) && end != begin && end != initBegin)
             {
                 end = end->_before;
             }
             current->data = end->data;
             current = end;
-            // ÔÙÕÒÒ»¸ö±È base Ð¡µÄ
+            // ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ base Ð¡ï¿½ï¿½
             while (!comparer(base.data, begin->data) && begin != end && begin != initEnd)
             {
                 begin = begin->_next;
