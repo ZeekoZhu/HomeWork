@@ -19,7 +19,7 @@ Number::Number(string number)
 }
 
 /// <summary>
-/// ½«Êı×Ö×ª»»µ½×Ö·û´®
+/// å°†æ•°å­—è½¬æ¢åˆ°å­—ç¬¦ä¸²
 /// </summary>
 /// <returns></returns>
 string Number::ToString()
@@ -46,7 +46,7 @@ string Number::ToString()
 }
 
 /// <summary>
-/// ¼Ó·¨
+/// åŠ æ³•
 /// </summary>
 /// <param name="other">The other.</param>
 /// <returns></returns>
@@ -82,7 +82,7 @@ Number Number::operator+(Number& other)
 }
 
 /// <summary>
-/// ¼õ·¨
+/// å‡æ³•
 /// </summary>
 /// <param name="other">The other.</param>
 /// <returns></returns>

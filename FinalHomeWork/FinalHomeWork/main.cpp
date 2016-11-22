@@ -18,13 +18,13 @@ using namespace std;
 //    List<Student> f3 = f1;
 //    f3.AddRange(f2);
 //    Student::WriteFile("3.txt", f3);
-//    cout << "Êý¾ÝÒÑ¾­ºÏ²¢µ½ 3.txt" << endl;
+//    cout << "æ•°æ®å·²ç»åˆå¹¶åˆ° 3.txt" << endl;
 //    List<Student>* again = f3.Where([](Student& s)->bool
 //    {
 //        return s.Chinese < 60 || s.English < 60 || s.Math < 60;
 //    });
 //    Student::WriteFile("4.txt", *again);
-//    cout << "²¹¿¼Ñ§ÉúÃûµ¥ÒÑ¾­Ð´Èë 4.txt" << endl;
+//    cout << "è¡¥è€ƒå­¦ç”Ÿåå•å·²ç»å†™å…¥ 4.txt" << endl;
 //    // the second method to sort
 //    /*List<Student> sorted = again->PopSort([](Student s, Student b)->bool
 //    {

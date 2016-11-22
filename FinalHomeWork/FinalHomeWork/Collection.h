@@ -1,10 +1,6 @@
 #pragma once
 #include <iostream>
 #include <functional>
-#include <stdexcept>
-#include <cmath>
-
-using namespace std;
 
 #ifndef MYLIST_H
 #define MYLIST_H
@@ -12,7 +8,7 @@ template <typename T> class List;
 template <typename T> class Stack;
 
 /// <summary>
-/// ���Խṹ�ڵ���
+/// 线性结构节点类
 /// </summary>
 template <typename T>
 class Node
@@ -39,7 +35,7 @@ protected:
 
 
 /// <summary>
-/// ȫ����δ���ٵĽڵ����
+/// 全部的未销毁的节点个数
 /// </summary>
 template <typename T>
 int Node<T>::_total = 0;
@@ -48,7 +44,7 @@ int Node<T>::_total = 0;
 
 
 /// <summary>
-/// ����
+/// 链表
 /// </summary>
 template <typename T>
 class List
@@ -58,7 +54,7 @@ protected:
     Node<T>* tail;
 
     /// <summary>
-    /// ��ȡ���ݽڵ�.
+    /// 获取数据节点.
     /// </summary>
     /// <param name="index">The index.</param>
     /// <returns></returns>
@@ -104,7 +100,7 @@ protected:
 public:
 
     /// <summary>
-    /// ��ȡԪ�ظ���
+    /// 获取元素个数
     /// </summary>
     int Length;
 
@@ -134,7 +130,7 @@ public:
 
 
     /// <summary>
-    /// ��ĩβ���һ��Ԫ�ء�
+    /// 向末尾添加一个元素。
     /// </summary>
     /// <param name="value">The value.</param>
     /// <returns></returns>
@@ -180,7 +176,7 @@ public:
     }
 
     /// <summary>
-    /// �±����
+    /// 下标访问
     /// </summary>
     /// <param name="n">The n.</param>
     /// <returns></returns>
@@ -190,9 +186,9 @@ public:
     }
 
     /* const T& operator[] (std::size_t n)
-     {
-         return this->GetNodeAt(n).data;
-     }*/
+    {
+    return this->GetNodeAt(n).data;
+    }*/
 
     List<T>& RemoveAt(size_t index)
     {
@@ -258,7 +254,7 @@ public:
     }
 
     /// <summary>
-    /// �Լ���������Ԫ��ִ�в���
+    /// 对集合中所有元素执行操作
     /// </summary>
     /// <param name="action">The action.</param>
     /// <returns></returns>
@@ -275,7 +271,7 @@ public:
 
 
     /// <summary>
-    /// �μ� https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+    /// 参见 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
     /// </summary>
     /// <param name="action">The action.</param>
     /// <returns></returns>
@@ -369,14 +365,14 @@ private:
 
         while (begin != end)
         {
-            // ����һ���� base ���
+            // 先找一个比 base 大的
             while (comparer(base.data, end->data) && end != begin && end != initBegin)
             {
                 end = end->_before;
             }
             current->data = end->data;
             current = end;
-            // ����һ���� base С��
+            // 再找一个比 base 小的
             while (!comparer(base.data, begin->data) && begin != end && begin != initEnd)
             {
                 begin = begin->_next;
