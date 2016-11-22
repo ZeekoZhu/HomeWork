@@ -4,7 +4,7 @@
 using namespace std;
 
 /// <summary>
-/// M è¿›åˆ¶æ•°å­—è½¬ 10 è¿›åˆ¶
+/// M ½øÖÆÊý×Ö×ª 10 ½øÖÆ
 /// </summary>
 /// <param name="c">The c.</param>
 /// <returns></returns>
@@ -21,7 +21,7 @@ int ConvertToOctD(char c)
 }
 
 /// <summary>
-/// 10 è¿›åˆ¶æ•°å­—è½¬åˆ° M è¿›åˆ¶
+/// 10 ½øÖÆÊý×Ö×ªµ½ M ½øÖÆ
 /// </summary>
 /// <param name="digital">The digital.</param>
 /// <returns></returns>
@@ -38,7 +38,7 @@ char ConvertToMD(int digital)
 }
 
 /// <summary>
-/// M è¿›åˆ¶æ•°è½¬ 10 è¿›åˆ¶
+/// M ½øÖÆÊý×ª 10 ½øÖÆ
 /// </summary>
 /// <param name="M">The m.</param>
 /// <param name="x">The x.</param>
@@ -60,7 +60,7 @@ double ConvertOctWithStack(int M, string x)
 }
 
 /// <summary>
-/// M è¿›åˆ¶æ•°è½¬ 10 è¿›åˆ¶
+/// M ½øÖÆÊý×ª 10 ½øÖÆ
 /// </summary>
 /// <param name="M">The m.</param>
 /// <param name="x">The x.</param>
@@ -83,7 +83,7 @@ double ConvertOctWithArray(int M, string x)
 }
 
 /// <summary>
-/// ä»Ž 10 è¿›åˆ¶è½¬åˆ° M è¿›åˆ¶
+/// ´Ó 10 ½øÖÆ×ªµ½ M ½øÖÆ
 /// </summary>
 /// <param name="M">The m.</param>
 /// <param name="x">The x.</param>
@@ -105,7 +105,7 @@ string FromOctToWithStack(int M, int x)
 }
 
 /// <summary>
-/// ä»Ž 10 è¿›åˆ¶è½¬åˆ° M è¿›åˆ¶
+/// ´Ó 10 ½øÖÆ×ªµ½ M ½øÖÆ
 /// </summary>
 /// <param name="M">The m.</param>
 /// <param name="x">The x.</param>

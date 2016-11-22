@@ -57,7 +57,7 @@ public:
             }
         }
 
-        // æ‰€æœ‰å­—ç¬¦ä¸ªæ•°
+        // ËùÓĞ×Ö·û¸öÊı
         tableLen = len = index + 1;
 
         // construct new sub tree
@@ -71,7 +71,7 @@ public:
             GetSubTree(left, right, index + 1);
             if (left >= 0 && right >= 0)
             {
-                // æœ€ç»ˆå¾—åˆ°æ ‘æ ¹çš„ä½ç½®
+                // ×îÖÕµÃµ½Ê÷¸ùµÄÎ»ÖÃ
                 index++;
                 Tree[index].Left = left;
                 Tree[index].Right = right;
@@ -149,27 +149,27 @@ public:
         while (!trace.empty())
         {
             int tmp = trace.top();
-            // ç”Ÿæˆç¼–ç 
+            // Éú³É±àÂë
             if (Tree[tmp].Parent >= 0)
             {
                 int pl = Tree[Tree[tmp].Parent].Left;
                 prefix += pl == tmp ? "0" : "1";
             }
-            // å¶å­ç»“ç‚¹
+            // Ò¶×Ó½áµã
             if (Tree[tmp].Value > 0)
             {
                 CodeTable[i].Value = Tree[tmp].Value;
                 CodeTable[i].Code = prefix;
                 i++;
                 trace.pop();
-                // å·¦å­©å­
+                // ×óº¢×Ó
                 if (prefix.back() == '0')
                 {
                     prefix = prefix.substr(0, prefix.length() - 1);
                 }
                 prefix = prefix.substr(0, prefix.length() - 1);
             }
-            // æ™®é€šèŠ‚ç‚¹
+            // ÆÕÍ¨½Úµã
             else
             {
                 trace.pop();

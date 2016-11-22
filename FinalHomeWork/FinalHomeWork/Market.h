@@ -1,4 +1,4 @@
-ï»¿//
+//
 // Created by Zeeko on 2016/11/22.
 //
 
@@ -14,9 +14,9 @@ using namespace std;
 int Dijkstra()
 {
     int row;
-    cout << "è¯·è¾“å…¥è‰æ³¥é©¬çš„çŸ©é˜µè¡Œæ•°ï¼š" << endl;
+    cout << "ÇëÊäÈë²ÝÄàÂíµÄ¾ØÕóÐÐÊý£º" << endl;
     cin >> row;
-    cout << "è¯·è¾“å…¥é‚»æŽ¥çŸ©é˜µï¼š" << endl;
+    cout << "ÇëÊäÈëÁÚ½Ó¾ØÕó£º" << endl;
     vector<vector<int>>* matrix = new vector<vector<int>>(row, vector<int>(row, 0));
     vector<vector<int>>* path = new vector<vector<int>>(row, vector<int>(row, -1));
     int tmp;
