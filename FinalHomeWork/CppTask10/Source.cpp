@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <vector>
+#include <limits>
 
 using namespace std;
 
@@ -15,9 +17,10 @@ public:
         data = new T[10];
     }
 
-    Vector<T>(int size) : Length(0), Capacity(size)
+    Vector<T>(int size) : Length(size), Capacity(size * 2)
     {
-        data = new T[size];
+        data = new T[size * 2];
+
     }
 
     Vector<T>(const Vector<T>& other)
@@ -114,7 +117,7 @@ void Processer(Vector<Tdata>& vector)
     }
 }
 
-int main()
+void VectorTest()
 {
     string command;
     while (cin >> command)
@@ -140,5 +143,95 @@ int main()
         }
 
     }
+}
+
+void Init(int ** source, int m, int n);
+
+void PixelTest();
+
+struct Point
+{
+    int M;
+    int N;
+    Point(int m, int n) :M(m), N(m) {};
+};
+
+void PixelTest()
+{
+    int m, n, m1, n1;
+    cin >> m >> n;
+    // initialize the source graph
+    int** source = new int*[m];
+    Init(source, m, n);
+
+    // initialize the subgraph
+    cin >> m1 >> n1;
+    int** target = new int*[m1];
+    Init(target, m1, n1);
+
+    // index range
+    int rm = m - m1;
+    int rn = n - n1;
+
+    int distance = 0;
+
+    int min = INT_MAX;
+    vector<Point> results;
+
+    for (int dm = 0; dm <= rm; dm++)
+    {
+        for (int dn = 0; dn <= rn; dn++)
+        {
+            distance = 0;
+            for (int i = 0; i < m1; i++)
+            {
+                for (int j = 0; j < n1; j++)
+                {
+                    distance += abs(source[dm + i][dn + j] - target[i][j]);
+                }
+            }
+            if (min > distance)
+            {
+                min = distance;
+                results.clear();
+                results.push_back(Point(dm, dn));
+            }
+            else if (min == distance)
+            {
+                results.push_back(Point(dm, dn));
+            }
+        }
+    }
+
+    cout << min << endl;
+    for (int i = 0; i < results.size(); i++)
+    {
+        cout << "<" << results[i].M + 1 << "," << results[i].N + 1 << ">" << endl;
+    }
+}
+
+void Pixel()
+{
+    PixelTest();
+
+
+}
+
+void Init(int ** source, int m, int n)
+{
+    for (int i = 0; i < m; i++)
+    {
+        source[i] = new int[n];
+        for (int j = 0; j < n; j++)
+        {
+            cin >> source[i][j];
+        }
+    }
+}
+
+int main()
+{
+    //VectorTest();
+    Pixel();
     return 0;
 }
