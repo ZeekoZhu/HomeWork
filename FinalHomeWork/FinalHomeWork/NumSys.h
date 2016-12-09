@@ -13,6 +13,8 @@ double ConvertOctWithArray(int M, string x);
 
 string FromOctToWithStack(int M, int x);
 
+string FromOctToWithArray(int M, int x);
+
 #endif // !NUM_SYS_H
 
 

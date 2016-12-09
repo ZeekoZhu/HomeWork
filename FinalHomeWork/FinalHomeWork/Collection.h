@@ -329,25 +329,28 @@ public:
     {
         List<T>* result = new List<T>();
         *result = *this;
-        Node<T>* that;
+        Node<T>* that = result->head;
+        Node<T>* lastExchange = result->head;
         bool isChanged = false;
         T tmp;
-        do
+        Node<T>* end = result->tail;
+        while (end != result->head)
         {
+            lastExchange = result->head;
             that = result->head;
-            isChanged = false;
-            while (that->_next != nullptr)
+            while (that != end)
             {
-                if (!comparer(that->data, that->_next->data))
+                if (comparer(that->data, that->_next->data))
                 {
                     tmp = that->data;
                     that->data = that->_next->data;
                     that->_next->data = tmp;
-                    isChanged = true;
+                    lastExchange = that;
                 }
                 that = that->_next;
             }
-        } while (isChanged);
+            end = lastExchange;
+        }
 
         return *result;
     }

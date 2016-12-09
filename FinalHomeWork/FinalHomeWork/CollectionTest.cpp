@@ -1,4 +1,5 @@
 #include<iostream>
+#include <ctime>
 #include "Collection.h"
 #include "CollectionTest.h"
 #include "Huffman.cpp"
@@ -34,23 +35,30 @@ using namespace std;
     void CollectionTest::ListSortTest()
     {
         List<int>nums;
-        nums.Add(5)
-            .Add(1)
-            .Add(4)
-            .Add(6);
+        int tmp;
+        cin >> tmp;
+        for (int i = 0; i < tmp; i++)
+        {
+            nums.Add(rand());
+        }
+        auto begin = clock();
         List<int> sorted = nums.PopSort([](int a, int b)->bool 
         {
             return a > b;
         });
-        sorted.ForEach([](int a)->void
+        auto end = clock();
+        cout << "total time: " << (double)(end - begin)/CLOCKS_PER_SEC;
+        /*sorted.ForEach([](int a)->void
         {
             cout << a << " ";
-        });
+        });*/
     }
 
     void CollectionTest::HuffmanTest()
     {
+        cout << "source string is aaabbcd" << endl << "and code table will be shown below" << endl;
+
         Huffman h("aaabbcd");
-        h.Encode();
-        h.Decode("0001010110111");
+        cout << "Encode: " << h.Encode() << endl;
+        cout << "Decode: " << h.Decode("0001010110111") << endl;
     }
