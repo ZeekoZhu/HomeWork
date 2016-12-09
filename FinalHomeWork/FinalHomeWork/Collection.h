@@ -8,7 +8,7 @@ template <typename T> class List;
 template <typename T> class Stack;
 
 /// <summary>
-/// çº¿æ€§ç»“æ„èŠ‚ç‚¹ç±»
+/// ÏßĞÔ½á¹¹½ÚµãÀà
 /// </summary>
 template <typename T>
 class Node
@@ -35,7 +35,7 @@ protected:
 
 
 /// <summary>
-/// å…¨éƒ¨çš„æœªé”€æ¯çš„èŠ‚ç‚¹ä¸ªæ•°
+/// È«²¿µÄÎ´Ïú»ÙµÄ½Úµã¸öÊı
 /// </summary>
 template <typename T>
 int Node<T>::_total = 0;
@@ -44,7 +44,7 @@ int Node<T>::_total = 0;
 
 
 /// <summary>
-/// é“¾è¡¨
+/// Á´±í
 /// </summary>
 template <typename T>
 class List
@@ -54,7 +54,7 @@ protected:
     Node<T>* tail;
 
     /// <summary>
-    /// è·å–æ•°æ®èŠ‚ç‚¹.
+    /// »ñÈ¡Êı¾İ½Úµã.
     /// </summary>
     /// <param name="index">The index.</param>
     /// <returns></returns>
@@ -100,7 +100,7 @@ protected:
 public:
 
     /// <summary>
-    /// è·å–å…ƒç´ ä¸ªæ•°
+    /// »ñÈ¡ÔªËØ¸öÊı
     /// </summary>
     int Length;
 
@@ -130,7 +130,7 @@ public:
 
 
     /// <summary>
-    /// å‘æœ«å°¾æ·»åŠ ä¸€ä¸ªå…ƒç´ ã€‚
+    /// ÏòÄ©Î²Ìí¼ÓÒ»¸öÔªËØ¡£
     /// </summary>
     /// <param name="value">The value.</param>
     /// <returns></returns>
@@ -176,7 +176,7 @@ public:
     }
 
     /// <summary>
-    /// ä¸‹æ ‡è®¿é—®
+    /// ÏÂ±ê·ÃÎÊ
     /// </summary>
     /// <param name="n">The n.</param>
     /// <returns></returns>
@@ -254,7 +254,7 @@ public:
     }
 
     /// <summary>
-    /// å¯¹é›†åˆä¸­æ‰€æœ‰å…ƒç´ æ‰§è¡Œæ“ä½œ
+    /// ¶Ô¼¯ºÏÖĞËùÓĞÔªËØÖ´ĞĞ²Ù×÷
     /// </summary>
     /// <param name="action">The action.</param>
     /// <returns></returns>
@@ -271,7 +271,7 @@ public:
 
 
     /// <summary>
-    /// å‚è§ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+    /// ²Î¼û https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
     /// </summary>
     /// <param name="action">The action.</param>
     /// <returns></returns>
@@ -368,14 +368,14 @@ private:
 
         while (begin != end)
         {
-            // å…ˆæ‰¾ä¸€ä¸ªæ¯” base å¤§çš„
+            // ÏÈÕÒÒ»¸ö±È base ´óµÄ
             while (comparer(base.data, end->data) && end != begin && end != initBegin)
             {
                 end = end->_before;
             }
             current->data = end->data;
             current = end;
-            // å†æ‰¾ä¸€ä¸ªæ¯” base å°çš„
+            // ÔÙÕÒÒ»¸ö±È base Ğ¡µÄ
             while (!comparer(base.data, begin->data) && begin != end && begin != initEnd)
             {
                 begin = begin->_next;
