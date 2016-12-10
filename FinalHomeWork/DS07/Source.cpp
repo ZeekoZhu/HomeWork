@@ -24,10 +24,9 @@ public:
 
 class GNode
 {
-
+public:
     int index;          // 顶点所在位置
     GNode* nextArc;     //下一条弧
-public:
     GNode() :nextArc(nullptr) {}
     GNode(int i) :nextArc(nullptr), index(i) {}
 };
@@ -64,25 +63,88 @@ public:
 
     void InsertArc(int a, int b)
     {
-        if (IsValidIndex(a) && IsValidIndex(b))
+        if (!IsValidIndex(a) || !IsValidIndex(b))
         {
             throw new out_of_range("index out of range");
         }
-        if (heads[a]->arc == nullptr)
+        GNode* i = heads[a].arc;
+        if (i == nullptr)
         {
-            heads[a]->arc = new GNode(b);
+            heads[a].arc = new GNode(b);
+        }
+        else
+        {
+            for (; i->nextArc != nullptr; i = i->nextArc)
+            {
+            }
+            i->nextArc = new GNode(b);
         }
     }
 
+    void DeleteVex(int a)
+    {
+        count--;
+        memcpy(heads + a, heads + a + 1, sizeof(Vex<T>)*count - a);
 
+        for (int i = 0; i < count; i++)
+        {
+            GNode* that = heads[i].arc;
+            while (that != nullptr && that->nextArc != nullptr)
+            {
+                if (that->index == a)
+                {
+                    heads[i].arc = that->nextArc;
+                    delete that;
+                    break;
+                }
+                if (that->nextArc->index == a)
+                {
+                    that->nextArc = that->nextArc->nextArc;
+                    delete that->nextArc;
+                    break;
+                }
+                that = that->nextArc;
+            }
+        }
+    }
+
+    void DeleteArc(int a, int b)
+    {
+        GNode* that = heads[a].arc;
+        if (heads[a].arc->index == b)
+        {
+            heads[a].arc = heads[a].arc->nextArc;
+            delete that;
+            return;
+        }
+        while (that != nullptr && that->nextArc != nullptr)
+        {
+            if (that->index == b)
+            {
+                heads[a].arc = that->nextArc->nextArc;
+                delete that;
+                break;
+            }
+            if (that->nextArc->index == b)
+            {
+                that->nextArc = that->nextArc->nextArc;
+                delete that->nextArc;
+                break;
+            }
+            that = that->nextArc;
+        }
+    }
 };
 
 int main()
 {
     Graph<int> g;
     Vex<int> v(1);
+    Vex<int> v2(2);
+    g.InsertVex(v2);
     g.InsertVex(v);
-    g.InsertVex(v);
-    g.InsertVex(v);
-
+    g.InsertVex(v2);
+    g.InsertArc(0, 2);
+    g.DeleteArc(0, 2);
+    g.DeleteVex(1);
 }
