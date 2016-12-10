@@ -1,4 +1,6 @@
 #include "stdafx.h"
+#include<stdio.h>
+#include<cstdlib>
 
 using namespace std;
 
@@ -111,6 +113,10 @@ public:
     void DeleteArc(int a, int b)
     {
         GNode* that = heads[a].arc;
+        if (that == nullptr)
+        {
+            return;
+        }
         if (heads[a].arc->index == b)
         {
             heads[a].arc = heads[a].arc->nextArc;
@@ -134,17 +140,86 @@ public:
             that = that->nextArc;
         }
     }
+
+    bool HasRouteBetween(int a, int b)
+    {
+        int* trace = new int[count];
+        memset(trace, 0, sizeof(trace));
+        bool res = DFS(trace, a, b);
+        delete[] trace;
+        return res;
+    }
+
+    bool DFS(int* trace, int current, int target)
+    {
+        trace[current] = 1;
+        if (trace[current] == 1)
+        {
+            return false;
+        }
+        GNode* that = heads[current].arc;
+        while (that != nullptr)
+        {
+            if (that->index == target)
+            {
+                return true;
+            }
+            if (DFS(trace, that->index, target))
+            {
+                return true;
+            }
+            that = that->nextArc;
+        }
+        return false;
+    }
+
+    bool HasArcBetween(int a, int b)
+    {
+        GNode* that = heads[a].arc;
+        if (that == nullptr)
+        {
+            return false;
+        }
+        if (heads[a].arc->index == b)
+        {
+            return true;
+        }
+        while (that != nullptr && that->nextArc != nullptr)
+        {
+            if (that->index == b)
+            {
+                return true;
+            }
+            if (that->nextArc->index == b)
+            {
+                return true;
+            }
+            that = that->nextArc;
+        }
+        return false;
+    }
 };
 
-int main()
+void DfsTest()
 {
     Graph<int> g;
     Vex<int> v(1);
     Vex<int> v2(2);
     g.InsertVex(v2);
     g.InsertVex(v);
+    g.InsertVex(v);
+    g.InsertVex(v);
     g.InsertVex(v2);
     g.InsertArc(0, 2);
-    g.DeleteArc(0, 2);
-    g.DeleteVex(1);
+    g.InsertArc(1, 3);
+    g.InsertArc(1, 0);
+    g.InsertArc(4, 0);
+    g.InsertArc(3, 4);
+    g.InsertArc(2, 3);
+    cout << g.HasRouteBetween(0, 1);
+}
+
+int main()
+{
+    
 }
