@@ -11,12 +11,12 @@ template<typename T> class Graph;
 template<typename T>
 class Vex
 {
+public:
     friend class GNode;
     friend class Graph<T>;
     T data;
     GNode* arc = nullptr;
 
-public:
     Vex(T value) :data(value)
     {}
 
@@ -36,17 +36,13 @@ public:
 template<typename T>
 class Graph
 {
+public:
     Vex<T>* heads;
     int count;
 
     bool IsValidIndex(int a)
     {
         return 0 <= a && a < count;
-    }
-public:
-    int Count()
-    {
-        return count;
     }
 
     Graph<T>() : count(0), heads(new Vex<T>[1])
@@ -221,5 +217,42 @@ void DfsTest()
 
 int main()
 {
+    Graph<string> g;
+    Vex<string> va(string("a"));
+    Vex<string> vb(string("b"));
+    Vex<string> vc(string("c"));
+    Vex<string> vd(string("d"));
+    Vex<string> ve(string("e"));
+    Vex<string> vt(string("*"));
+    Vex<string> vp(string("+"));
+
+
+    g.InsertVex(vt);
+    g.InsertVex(vp);
+    g.InsertVex(vt);
+    g.InsertVex(vp);
+    g.InsertVex(va);
+    g.InsertVex(vb);
+    g.InsertVex(vt);
+    g.InsertVex(vp);
+    g.InsertVex(vc);
+    g.InsertVex(vd);
+    g.InsertVex(vt);
+    g.InsertVex(ve);
+
+    g.InsertArc(0, 1);
+    g.InsertArc(0, 10);
+    g.InsertArc(1, 10);
+    g.InsertArc(1, 2);
+    g.InsertArc(2, 3);
+    g.InsertArc(2, 6);
+    g.InsertArc(3, 4);
+    g.InsertArc(3, 5);
+    g.InsertArc(6, 5);
+    g.InsertArc(6, 7);
+    g.InsertArc(7, 8);
+    g.InsertArc(7, 9);
+    g.InsertArc(10, 7);
+    g.InsertArc(10, 11);
     
 }
