@@ -1,13 +1,14 @@
 #include "stdafx.h"
-#include<stdio.h>
-#include<cstdlib>
+#include <vector>
+#include <cstdlib>
+#include <string>
 
 using namespace std;
 
 class GNode;
 template<typename T> class Graph;
 
-// 图的顶点类
+// vertex
 template<typename T>
 class Vex
 {
@@ -24,11 +25,12 @@ public:
 
 };
 
+// arc list's node
 class GNode
 {
 public:
-    int index;          // 顶点所在位置
-    GNode* nextArc;     //下一条弧
+    int index;          // the index of target vertex
+    GNode* nextArc;     // the next arc in the list
     GNode() :nextArc(nullptr) {}
     GNode(int i) :nextArc(nullptr), index(i) {}
 };
@@ -37,7 +39,7 @@ template<typename T>
 class Graph
 {
 public:
-    Vex<T>* heads;
+    vector<Vex<T>> heads;   // vertexs
     int count;
 
     bool IsValidIndex(int a)
@@ -45,18 +47,14 @@ public:
         return 0 <= a && a < count;
     }
 
-    Graph<T>() : count(0), heads(new Vex<T>[1])
+    Graph<T>() : count(0)
     {
     }
 
-    void InsertVex(Vex<T>& v)
+    void InsertVex(Vex<T> v)
     {
         count++;
-        Vex<T>* tmp = new Vex<T>[count];
-        memcpy(tmp, heads, sizeof(Vex<T>)*(count - 1));
-        tmp[count - 1].data = v.data;
-        delete[] heads;
-        heads = tmp;
+        heads.push_back(v);
     }
 
     void InsertArc(int a, int b)
@@ -66,12 +64,15 @@ public:
             throw new out_of_range("index out of range");
         }
         GNode* i = heads[a].arc;
+
+        // if the vertex doesn't have any arc then add a new arc for it
         if (i == nullptr)
         {
             heads[a].arc = new GNode(b);
         }
         else
         {
+            // find the tail of the list
             for (; i->nextArc != nullptr; i = i->nextArc)
             {
             }
@@ -82,28 +83,8 @@ public:
     void DeleteVex(int a)
     {
         count--;
-        memcpy(heads + a, heads + a + 1, sizeof(Vex<T>)*count - a);
-
-        for (int i = 0; i < count; i++)
-        {
-            GNode* that = heads[i].arc;
-            while (that != nullptr && that->nextArc != nullptr)
-            {
-                if (that->index == a)
-                {
-                    heads[i].arc = that->nextArc;
-                    delete that;
-                    break;
-                }
-                if (that->nextArc->index == a)
-                {
-                    that->nextArc = that->nextArc->nextArc;
-                    delete that->nextArc;
-                    break;
-                }
-                that = that->nextArc;
-            }
-        }
+        auto it = heads.begin() + a;
+        heads.erase(it);
     }
 
     void DeleteArc(int a, int b)
@@ -148,11 +129,11 @@ public:
 
     bool DFS(int* trace, int current, int target)
     {
-        trace[current] = 1;
         if (trace[current] == 1)
         {
             return false;
         }
+        trace[current] = 1;
         GNode* that = heads[current].arc;
         while (that != nullptr)
         {
@@ -169,31 +150,6 @@ public:
         return false;
     }
 
-    bool HasArcBetween(int a, int b)
-    {
-        GNode* that = heads[a].arc;
-        if (that == nullptr)
-        {
-            return false;
-        }
-        if (heads[a].arc->index == b)
-        {
-            return true;
-        }
-        while (that != nullptr && that->nextArc != nullptr)
-        {
-            if (that->index == b)
-            {
-                return true;
-            }
-            if (that->nextArc->index == b)
-            {
-                return true;
-            }
-            that = that->nextArc;
-        }
-        return false;
-    }
 };
 
 void DfsTest()
@@ -213,9 +169,30 @@ void DfsTest()
     g.InsertArc(3, 4);
     g.InsertArc(2, 3);
     cout << g.HasRouteBetween(0, 1);
+    cout << g.HasRouteBetween(2, 1);
+    cout << g.HasRouteBetween(1, 2);
 }
 
-int main()
+string Calc(int* trace, Graph<string>& g, int current)
+{
+    if (trace[current] == 1)
+    {
+        return g.heads[current].data;
+    }
+    trace[current] = 1;
+    if (g.heads[current].arc == nullptr)
+    {
+        return g.heads[current].data;
+    }
+    g.heads[current].data =
+        Calc(trace, g, g.heads[current].arc->index) +
+        Calc(trace, g, g.heads[current].arc->nextArc->index) +
+        g.heads[current].data;
+    return g.heads[current].data;
+
+}
+
+void CalcTest()
 {
     Graph<string> g;
     Vex<string> va(string("a"));
@@ -254,5 +231,14 @@ int main()
     g.InsertArc(7, 9);
     g.InsertArc(10, 7);
     g.InsertArc(10, 11);
-    
+
+    int* trace = new int[g.count];
+    memset(trace, 0, sizeof(int)*g.count);
+    cout << Calc(trace, g, 0);
+}
+
+int main()
+{
+    CalcTest();
+
 }
