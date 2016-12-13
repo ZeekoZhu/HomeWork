@@ -42,16 +42,16 @@ using namespace std;
             nums.Add(rand());
         }
         auto begin = clock();
-        List<int> sorted = nums.PopSort([](int a, int b)->bool 
+        List<int> sorted = nums.Sort([](int a, int b)->bool 
         {
             return a > b;
         });
         auto end = clock();
-        cout << "total time: " << (double)(end - begin)/CLOCKS_PER_SEC;
-        /*sorted.ForEach([](int a)->void
+        cout << "total time: " << (double)(end - begin) / CLOCKS_PER_SEC << endl;
+        sorted.ForEach([](int a)->void
         {
             cout << a << " ";
-        });*/
+        });
     }
 
     void CollectionTest::HuffmanTest()

@@ -93,7 +93,7 @@ int main()
 
 
     //CollectionTest::HuffmanTest();
-    CollectionTest::ListSortTest();
-    //Dijkstra();
+    //CollectionTest::ListSortTest();
+    Floyd();
     return 0;
 }

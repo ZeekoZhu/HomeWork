@@ -8,7 +8,7 @@ template <typename T> class List;
 template <typename T> class Stack;
 
 /// <summary>
-/// ÏßĞÔ½á¹¹½ÚµãÀà
+/// çº¿æ€§ç»“æ„èŠ‚ç‚¹ç±»
 /// </summary>
 template <typename T>
 class Node
@@ -35,7 +35,7 @@ protected:
 
 
 /// <summary>
-/// È«²¿µÄÎ´Ïú»ÙµÄ½Úµã¸öÊı
+/// å…¨éƒ¨çš„æœªé”€æ¯çš„èŠ‚ç‚¹ä¸ªæ•°
 /// </summary>
 template <typename T>
 int Node<T>::_total = 0;
@@ -44,7 +44,7 @@ int Node<T>::_total = 0;
 
 
 /// <summary>
-/// Á´±í
+/// é“¾è¡¨
 /// </summary>
 template <typename T>
 class List
@@ -54,7 +54,7 @@ protected:
     Node<T>* tail;
 
     /// <summary>
-    /// »ñÈ¡Êı¾İ½Úµã.
+    /// è·å–æ•°æ®èŠ‚ç‚¹.
     /// </summary>
     /// <param name="index">The index.</param>
     /// <returns></returns>
@@ -100,7 +100,7 @@ protected:
 public:
 
     /// <summary>
-    /// »ñÈ¡ÔªËØ¸öÊı
+    /// è·å–å…ƒç´ ä¸ªæ•°
     /// </summary>
     int Length;
 
@@ -130,7 +130,7 @@ public:
 
 
     /// <summary>
-    /// ÏòÄ©Î²Ìí¼ÓÒ»¸öÔªËØ¡£
+    /// å‘æœ«å°¾æ·»åŠ ä¸€ä¸ªå…ƒç´ ã€‚
     /// </summary>
     /// <param name="value">The value.</param>
     /// <returns></returns>
@@ -176,7 +176,7 @@ public:
     }
 
     /// <summary>
-    /// ÏÂ±ê·ÃÎÊ
+    /// ä¸‹æ ‡è®¿é—®
     /// </summary>
     /// <param name="n">The n.</param>
     /// <returns></returns>
@@ -242,6 +242,10 @@ public:
             target->data = value;
             Node<T>& that = this->GetNodeAt(index);
             target->_before = that._before;
+            if (target->_before!=nullptr)
+            {
+                target->_before->_next = target;
+            }
             that._before = target;
             target->_next = &that;
             this->Length++;
@@ -254,7 +258,7 @@ public:
     }
 
     /// <summary>
-    /// ¶Ô¼¯ºÏÖĞËùÓĞÔªËØÖ´ĞĞ²Ù×÷
+    /// å¯¹é›†åˆä¸­æ‰€æœ‰å…ƒç´ æ‰§è¡Œæ“ä½œ
     /// </summary>
     /// <param name="action">The action.</param>
     /// <returns></returns>
@@ -271,7 +275,7 @@ public:
 
 
     /// <summary>
-    /// ²Î¼û https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+    /// å‚è§ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
     /// </summary>
     /// <param name="action">The action.</param>
     /// <returns></returns>
@@ -354,6 +358,29 @@ public:
 
         return *result;
     }
+
+    List<T>& SelectSort(std::function<bool(T&, T&)> comparer)
+    {
+        List<T>* result = new List<T>();
+        Node<T>* that;
+        Node<T>* target = this->head;
+        for (int i = 0; i < this->Length; i++)
+        {
+            that = result->head;
+            int j = 0;
+            for (; j < result->Length; j++)
+            {
+                if (that == nullptr || comparer(that->data, target->data))
+                {
+                    break;
+                }
+                that = that->_next;
+            }
+            result->InsertAt(target->data, j);
+            target = target->_next;
+        }
+        return *result;
+    }
 private:
     void QSort(Node<T>* begin, Node<T>* end, std::function<bool(T&, T&)> comparer)
     {
@@ -368,14 +395,14 @@ private:
 
         while (begin != end)
         {
-            // ÏÈÕÒÒ»¸ö±È base ´óµÄ
+            // å…ˆæ‰¾ä¸€ä¸ªæ¯” base å¤§çš„
             while (comparer(base.data, end->data) && end != begin && end != initBegin)
             {
                 end = end->_before;
             }
             current->data = end->data;
             current = end;
-            // ÔÙÕÒÒ»¸ö±È base Ğ¡µÄ
+            // å†æ‰¾ä¸€ä¸ªæ¯” base å°çš„
             while (!comparer(base.data, begin->data) && begin != end && begin != initEnd)
             {
                 begin = begin->_next;
